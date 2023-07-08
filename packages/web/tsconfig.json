@@ -1,0 +1,17 @@
+
+{
+  "extends": "../../tsconfig.common.json",
+  "exclude": ["src/**/__tests__/*"],
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "verbatimModuleSyntax": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+		"types": ["vite/client"]
+  },
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

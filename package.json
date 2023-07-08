@@ -1,0 +1,29 @@
+{
+  "name": "showtimetv",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "core:build": "pnpm --filter @showtimetv/core build",
+    "core:start": "pnpm --filter @showtimetv/core start",
+    "core:test": "pnpm --filter @showtimetv/core test",
+    "web:dev": "pnpm --filter @showtimetv/web dev",
+    "web:build": "pnpm --filter @showtimetv/web build",
+    "web:lint": "pnpm --filter @showtimetv/web lint",
+    "web:test": "pnpm --filter @showtimetv/web test:unit",
+    "web:format": "pnpm --filter @showtimetv/web format",
+    "build": "pnpm run core:build && pnpm run web:build"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@rushstack/eslint-patch": "1.2.0",
+    "@tsconfig/node18": "2.0.1",
+    "@types/jsdom": "21.1.1",
+    "@types/node": "18.16.17",
+    "eslint": "8.39.0",
+    "npm-run-all": "4.1.5",
+    "prettier": "2.8.8",
+    "typescript": "5.0.4"
+  }
+}
