@@ -180,7 +180,6 @@ $font-headings-family: 'Noto', sans-serif !default;
 /// @type {String}
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
-
 /*
 	Responsive typography: stepped with value per breakpoint map
 	@type {Map}
@@ -197,4 +196,64 @@ $font-size-1: (
 $font-size-2: (
 	sm: remCalc(26),
 	lg: remCalc(34)
-)
+) !default;
+
+$font-size-3: (
+	sm: remCalc(24),
+	lg: remCalc(26)
+) !default;
+
+$font-size-4: (
+	sm: remCalc(20),
+	lg: remCalc(24)
+) !default;
+
+$font-size-5: (
+	sm: remCalc(18),
+	lg: remCalc(20)
+) !default;
+
+$font-size-6: (
+	sm: remCalc(16),
+	lg: remCalc(18)
+) !default;
+
+
+/*
+	---------------------------------
+ 	* Transition definitions
+ 	---------------------------------
+*/
+
+/// transition variables
+$transition-linear: all 250ms linear !default;
+$transition-linear-fast: all 150ms linear !default;
+$transition-ease: all 250ms ease !default;
+$transition-func-ease-out-cubic: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1) !default;
+
+
+
+/*
+	---------------------------------
+ 	* Border definitions
+ 	---------------------------------
+*/
+
+/// border variables
+$border-radius: remCalc(4) !default;
+$border-radius-sm: remCalc(2) !default;
+$border-radius-lg: remCalc(8) !default;
+
+/*
+	---------------------------------
+ 	* Shadow definitions
+ 	---------------------------------
+*/
+
+/// shadow variables
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !default;
+$shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !default;
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !default;
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !default;
+$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !default;
+
