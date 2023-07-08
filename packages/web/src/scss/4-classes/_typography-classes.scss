@@ -1,0 +1,42 @@
+///-------------------------- TYPOGRAPHY -------------------------
+/// TYPOGRAPHY - classes for typography
+///-------------------------------------------------------------'
+@use '../2-tools/' as tools;
+
+/*
+	Typography headings styles
+*/
+ .heading-1,
+ .heading-2,
+ .heading-3,
+ .heading-4,
+ .heading-5,
+ .heading-6 {
+	@include tools.text-headline();
+ }
+
+
+ .heading-1 {
+	@include tools.font-size-1();
+ }
+
+ .heading-2 {
+	@include tools.font-size-2();
+ }
+
+ .heading-3 {
+	@include tools.font-size-3();
+ }
+
+ .heading-4 {
+	@include tools.font-size-4();
+ }
+
+ .heading-5 {
+	@include tools.font-size-5();
+ }
+
+ .heading-6 {
+	@include tools.font-size-6();
+ }
+ 

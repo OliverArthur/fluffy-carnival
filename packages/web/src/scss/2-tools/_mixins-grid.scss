@@ -1,8 +1,8 @@
 ///-------------------------- GRID -------------------------
 /// GRID - mixins
 ///-------------------------------------------------------------
-@use './settings' as set;
-@use './tools' as tools;
+@use '../1-settings/settings' as var;
+@use './mixins-mq' as mq;
 
 /*
 	Define the grid container
@@ -12,13 +12,13 @@
 		- gap-col between columns
 		- gap-row between rows
 */
-@mixin grid($columns: set.$grid-columns, $gap-col: set.$grid-gap, $gap-row: set.$grid-gap) {
+@mixin grid($columns: var.$grid-columns, $gap-col: var.$grid-gap, $gap-row: var.$grid-gap) {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-rows: 1fr;
 	gap: $gap-row $gap-col;
 
-	@include tools.mq('md') {
+	@include mq.mq('md') {
 		grid-template-columns: repeat($cols_number, minmax(0, 1fr));
 		gap: $gap-row $gap-col;
 	}
@@ -32,11 +32,11 @@
 		- gap-col between columns
 		- gap-row between rows
 */
-@mixin grid-fixed($columns: set.$grid-columns, $gap-col: set.$grid-gap, $gap-row: set.$grid-gap) {
+@mixin grid-fixed($columns: var.$grid-columns, $gap-col: var.$grid-gap, $gap-row: var.$grid-gap) {
 	@include grid($columns, $gap-col, $gap-row);
 
-	@include tools.mq('lg') {
-		grid-template-columns: 1fr repeat($columns, set.$grid-col-max-width) 1fr;
+	@include mq.mq('lg') {
+		grid-template-columns: 1fr repeat($columns, var.$grid-col-max-width) 1fr;
 	}
 }
 
@@ -51,7 +51,7 @@
 */
 @mixin grid-cell-lines(
 	$col-start: 0,
-	$col-end: set.$grid-columns,
+	$col-end: var.$grid-columns,
 	$row-start: null,
 	$row-end: null
 ) {
@@ -69,7 +69,7 @@
 		- col span size
 		- col start line
 */
-@mixin grid-cell-span($col-span-size: set.$grid-columns, $col-start: null) {
+@mixin grid-cell-span($col-span-size: var.$grid-columns, $col-start: null) {
 	@if $col-star {
 		grid-column: $col-start / span $col-span-size;
 	} @else {

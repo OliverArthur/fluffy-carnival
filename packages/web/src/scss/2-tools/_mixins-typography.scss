@@ -2,15 +2,17 @@
 /// TYPOGRAPHY - mixins
 ///-------------------------------------------------------------
 
-@use './settings' as set;
-@use './tools' as tools;
+@use "../1-settings/functions" as func;
+@use "../1-settings/settings" as var;
+@use "./mixins-utilities" as util;
 
 /*
 	Define text style base
 */
 @mixin text-base {
-	font-family: set.$font-base-family;
-	@include tools.$responsive-property('font-size', set.$font-size-base);
+	@include util.responsive-property("font-size", var.$font-size-base);
+	
+	font-family: var.$font-base-family;
 	font-weight: 300;
 	line-height: 1.5;
 }
@@ -19,42 +21,43 @@
 	Define text headline based
 */
 @mixin text-headline {
-	font-family: set.$font-headings-family;
+	font-family: var.$font-headings-family;
 	font-weight: 600;
 	line-height: 1.1;
-	margin-bottom: tools.$remCalc(8);
-	margin-top: tools.$remCalc(42);
-	color: set.$black;
-	letter-spacing: tools.$remCalc(0.5);
+	margin-bottom: func.remCalc(8);
+	margin-top: func.remCalc(42);
+	color: var.$black;
+	letter-spacing: func.remCalc(0.5);
 
 	&:first-child {
 		margin-top: 0;
 	}
 }
 
+
 /*
 	Define font sizes based on responsive map.
 */
 @mixin font-size-1($font-size-map) {
-	@include tools.$responsive-property('font-size', set.$font-size-1);
+	@include util.responsive-property('font-size', set.$font-size-1);
 }
 
 @mixin font-size-2($font-size-map) {
-	@include tools.$responsive-property('font-size', set.$font-size-2);
+	@include util.responsive-property('font-size', set.$font-size-2);
 }
 
 @mixin font-size-3($font-size-map) {
-	@include tools.$responsive-property('font-size', set.$font-size-3);
+	@include util.responsive-property('font-size', set.$font-size-3);
 }
 
 @mixin font-size-4($font-size-map) {
-	@include tools.$responsive-property('font-size', set.$font-size-4);
+	@include util.responsive-property('font-size', set.$font-size-4);
 }
 
 @mixin font-size-5($font-size-map) {
-	@include tools.$responsive-property('font-size', set.$font-size-5);
+	@include util.responsive-property('font-size', set.$font-size-5);
 }
 
 @mixin font-size-6($font-size-map) {
-	@include tools.$responsive-property('font-size', set.$font-size-6);
+	@include util.responsive-property('font-size', set.$font-size-6);
 }
