@@ -1,0 +1,156 @@
+///-------------------------- SPACING -------------------------
+/// SPACING - classes for margin and padding
+///-------------------------------------------------------------
+@use './settings' as set;
+@use './tools' as tools;
+
+/*
+	Not padding X
+*/
+.px-0 {
+	padding-left: 0;
+	padding-right: 0;
+}
+/*
+	Not padding Y
+*/
+.py-0 {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+/*
+	Not margin X
+*/
+.mx-0 {
+	margin-left: 0;
+	margin-right: 0;
+}
+/*
+	Not margin Y
+*/
+.my-0 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+/*
+	Generate padding classes
+*/
+@each $name, $value in set.$spacings {
+	// vertical padding
+	.py-#{$name} {
+		padding-top: tools.remCalc($value);
+		padding-bottom: tools.remCalc($value);
+	}
+
+	// horizontal padding
+	.px-#{$name} {
+		padding-left: tools.remCalc($value);
+		padding-right: tools.remCalc($value);
+	}
+
+	// vertical margin
+	.my-#{$name} {
+		margin-top: tools.remCalc($value);
+		margin-bottom: tools.remCalc($value);
+	}
+
+	// horizontal margin
+	.mx-#{$name} {
+		margin-left: tools.remCalc($value);
+		margin-right: tools.remCalc($value);
+	}
+
+	// top padding
+	.pt-#{$name} {
+		padding-top: tools.remCalc($value);
+	}
+
+	// right padding
+	.pr-#{$name} {
+		padding-right: tools.remCalc($value);
+	}
+
+	// bottom padding
+	.pb-#{$name} {
+		padding-bottom: tools.remCalc($value);
+	}
+
+	// left padding
+	.pl-#{$name} {
+		padding-left: tools.remCalc($value);
+	}
+
+	// top margin
+	.mt-#{$name} {
+		margin-top: tools.remCalc($value);
+	}
+
+	// right margin
+	.mr-#{$name} {
+		margin-right: tools.remCalc($value);
+	}
+
+	// bottom margin
+	.mb-#{$name} {
+		margin-bottom: tools.remCalc($value);
+	}
+
+	// left margin
+	.ml-#{$name} {
+		margin-left: tools.remCalc($value);
+	}
+}
+
+/*
+	Responsive variants
+	Width classes: per breakpoint
+*/
+@each $breakpointName, $breakpointValue in set.$mq-breakpoints {
+	@each $name, $val in set.$spacings {
+		@include tools.mq($breakpointName) {
+			// vertical margins
+			.#{$breakpointName}\:my-#{$name} {
+				margin-top: tools.remCalc($val);
+				margin-bottom: tools.remCalc($val);
+			}
+			.#{$breakpointName}\:mt-#{$name} {
+				margin-top: tools.remCalc($val);
+			}
+			.#{$breakpointName}\:mb-#{$name} {
+				margin-bottom: tools.remCalc($val);
+			}
+			// horizontal margins
+			.#{$breakpointName}\:mx-#{$name} {
+				margin-left: tools.remCalc($val);
+				margin-right: tools.remCalc($val);
+			}
+			.#{$breakpointName}\:ml-#{$name} {
+				margin-left: tools.remCalc($val);
+			}
+			.#{$breakpointName}\:mr-#{$name} {
+				margin-right: tools.remCalc($val);
+			}
+
+			// vertical paddings
+			.#{$breakpointName}\:py-#{$name} {
+				padding-top: tools.remCalc($val);
+				padding-bottom: tools.remCalc($val);
+			}
+			.#{$breakpointName}\:pt-#{$name} {
+				padding-top: tools.remCalc($val);
+			}
+			.#{$breakpointName}\:pb-#{$name} {
+				padding-bottom: tools.remCalc($val);
+			}
+			// horizontal paddings
+			.#{$breakpointName}\:px-#{$name} {
+				padding-left: tools.remCalc($val);
+				padding-right: tools.remCalc($val);
+			}
+			.#{$breakpointName}\:pl-#{$name} {
+				padding-left: tools.remCalc($val);
+			}
+		}
+	}
+}
