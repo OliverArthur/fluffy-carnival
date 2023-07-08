@@ -1,9 +1,7 @@
-///-------------------------- UTILITIES MIXINS -------------------------
-/// UTILITIES MIXINS
+///-------------------------- UTILITIES -------------------------
+/// UTILITIES  - mixins
 ///-------------------------------------------------------------
-
-@use './settings' as var;
-@use './mixins-mq' as mq;
+@use './tools' as tools;
 
 
 /*
@@ -22,7 +20,7 @@
 		@if $breakpoint == 'sm' {
 			#{$property}: $value;
 		} @else {
-			@include mq.mq($breakpoint) {
+			@include tools.mq($breakpoint) {
 				#{$property}: $value;
 			}
 		}
