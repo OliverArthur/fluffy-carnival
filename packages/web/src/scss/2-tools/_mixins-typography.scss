@@ -1,10 +1,9 @@
-///-------------------------- TYPOGRAPHY -------------------------
+///-------------------------- TYPOGRAPHY -----------------------
 /// TYPOGRAPHY - mixins
 ///-------------------------------------------------------------
 
 @use './settings' as set;
 @use './tools' as tools;
-
 
 /*
 	Define text style base
@@ -32,7 +31,6 @@
 		margin-top: 0;
 	}
 }
-
 
 /*
 	Define font sizes based on responsive map.
