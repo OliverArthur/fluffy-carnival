@@ -19,7 +19,7 @@
 	gap: $gap-row $gap-col;
 
 	@include mq.mq('md') {
-		grid-template-columns: repeat($cols_number, minmax(0, 1fr));
+		grid-template-columns: repeat($columns, minmax(0, 1fr));
 		gap: $gap-row $gap-col;
 	}
 }
@@ -70,7 +70,7 @@
 		- col start line
 */
 @mixin grid-cell-span($col-span-size: var.$grid-columns, $col-start: null) {
-	@if $col-star {
+	@if $col-start {
 		grid-column: $col-start / span $col-span-size;
 	} @else {
 		grid-column: span $col-span-size;

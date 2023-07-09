@@ -1,0 +1,23 @@
+@use '../1-settings/settings' as var;
+
+.header {
+	background-color: var.$black;
+	display: flex;
+	justify-content: space-between;
+	padding: 1.25rem 0;
+	position: relative;
+	width: 100%;
+
+	&--sticky {
+		box-shadow: var.$shadow;
+		left: 0;
+		position: fixed;
+		right: 0;
+		top: 0;
+		z-index: var.$z-index-sticky;
+	}
+
+	&--static {
+		position: static;
+	}
+}
