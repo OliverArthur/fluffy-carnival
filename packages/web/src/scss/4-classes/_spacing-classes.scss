@@ -1,8 +1,8 @@
 ///-------------------------- SPACING -------------------------
 /// SPACING - classes for margin and padding
 ///-------------------------------------------------------------
-@use './settings' as set;
-@use './tools' as tools;
+@use '../1-settings/' as set;
+@use '../2-tools/' as tools;
 
 /*
 	Not padding X
@@ -39,66 +39,66 @@
 @each $name, $value in set.$spacings {
 	// vertical padding
 	.py-#{$name} {
-		padding-top: tools.remCalc($value);
-		padding-bottom: tools.remCalc($value);
+		padding-top: set.remCalc($value);
+		padding-bottom: set.remCalc($value);
 	}
 
 	// horizontal padding
 	.px-#{$name} {
-		padding-left: tools.remCalc($value);
-		padding-right: tools.remCalc($value);
+		padding-left: set.remCalc($value);
+		padding-right: set.remCalc($value);
 	}
 
 	// vertical margin
 	.my-#{$name} {
-		margin-top: tools.remCalc($value);
-		margin-bottom: tools.remCalc($value);
+		margin-top: set.remCalc($value);
+		margin-bottom: set.remCalc($value);
 	}
 
 	// horizontal margin
 	.mx-#{$name} {
-		margin-left: tools.remCalc($value);
-		margin-right: tools.remCalc($value);
+		margin-left: set.remCalc($value);
+		margin-right: set.remCalc($value);
 	}
 
 	// top padding
 	.pt-#{$name} {
-		padding-top: tools.remCalc($value);
+		padding-top: set.remCalc($value);
 	}
 
 	// right padding
 	.pr-#{$name} {
-		padding-right: tools.remCalc($value);
+		padding-right: set.remCalc($value);
 	}
 
 	// bottom padding
 	.pb-#{$name} {
-		padding-bottom: tools.remCalc($value);
+		padding-bottom: set.remCalc($value);
 	}
 
 	// left padding
 	.pl-#{$name} {
-		padding-left: tools.remCalc($value);
+		padding-left: set.remCalc($value);
 	}
 
 	// top margin
 	.mt-#{$name} {
-		margin-top: tools.remCalc($value);
+		margin-top: set.remCalc($value);
 	}
 
 	// right margin
 	.mr-#{$name} {
-		margin-right: tools.remCalc($value);
+		margin-right: set.remCalc($value);
 	}
 
 	// bottom margin
 	.mb-#{$name} {
-		margin-bottom: tools.remCalc($value);
+		margin-bottom: set.remCalc($value);
 	}
 
 	// left margin
 	.ml-#{$name} {
-		margin-left: tools.remCalc($value);
+		margin-left: set.remCalc($value);
 	}
 }
 
@@ -111,45 +111,45 @@
 		@include tools.mq($breakpointName) {
 			// vertical margins
 			.#{$breakpointName}\:my-#{$name} {
-				margin-top: tools.remCalc($val);
-				margin-bottom: tools.remCalc($val);
+				margin-top: set.remCalc($val);
+				margin-bottom: set.remCalc($val);
 			}
 			.#{$breakpointName}\:mt-#{$name} {
-				margin-top: tools.remCalc($val);
+				margin-top: set.remCalc($val);
 			}
 			.#{$breakpointName}\:mb-#{$name} {
-				margin-bottom: tools.remCalc($val);
+				margin-bottom: set.remCalc($val);
 			}
 			// horizontal margins
 			.#{$breakpointName}\:mx-#{$name} {
-				margin-left: tools.remCalc($val);
-				margin-right: tools.remCalc($val);
+				margin-left: set.remCalc($val);
+				margin-right: set.remCalc($val);
 			}
 			.#{$breakpointName}\:ml-#{$name} {
-				margin-left: tools.remCalc($val);
+				margin-left: set.remCalc($val);
 			}
 			.#{$breakpointName}\:mr-#{$name} {
-				margin-right: tools.remCalc($val);
+				margin-right: set.remCalc($val);
 			}
 
 			// vertical paddings
 			.#{$breakpointName}\:py-#{$name} {
-				padding-top: tools.remCalc($val);
-				padding-bottom: tools.remCalc($val);
+				padding-top: set.remCalc($val);
+				padding-bottom: set.remCalc($val);
 			}
 			.#{$breakpointName}\:pt-#{$name} {
-				padding-top: tools.remCalc($val);
+				padding-top: set.remCalc($val);
 			}
 			.#{$breakpointName}\:pb-#{$name} {
-				padding-bottom: tools.remCalc($val);
+				padding-bottom: set.remCalc($val);
 			}
 			// horizontal paddings
 			.#{$breakpointName}\:px-#{$name} {
-				padding-left: tools.remCalc($val);
-				padding-right: tools.remCalc($val);
+				padding-left: set.remCalc($val);
+				padding-right: set.remCalc($val);
 			}
 			.#{$breakpointName}\:pl-#{$name} {
-				padding-left: tools.remCalc($val);
+				padding-left: set.remCalc($val);
 			}
 		}
 	}

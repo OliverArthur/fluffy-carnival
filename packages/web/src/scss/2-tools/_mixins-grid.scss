@@ -76,3 +76,19 @@
 		grid-column: span $col-span-size;
 	}
 }
+
+
+/*
+	Define a grid cell ordering
+
+	Params:
+		- col order
+		- row order
+*/
+@mixin grid-cell-order($type: 'col', $order: 1) {
+	@if $type == 'col' {
+		order: $order;
+	} @else {
+		order: $order;
+	}
+}

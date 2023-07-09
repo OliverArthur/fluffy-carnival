@@ -1,0 +1,60 @@
+///-------------------------- Grid -------------------------
+/// GRID - classes for grid
+///-------------------------------------------------------------
+
+@use '../1-settings/' as set;
+@use '../2-tools/' as tools;
+
+/*
+	Grid class
+*/
+.grid {
+	@include tools.grid();
+}
+
+/*
+	Grid fixed class
+*/
+.grid-fixed {
+	@include tools.grid-fixed();
+}
+
+/*
+	Grid cell class
+*/
+@for $i from 1 through set.$grid-columns + 1 {
+	.grid__cell--#{$i} {
+		@include tools.grid-cell-span($i);
+	}
+}
+
+/*
+	Grid cell class per breakpoint
+*/
+@each $breakpointName, $breakpointView in set.$mq-breakpoints {
+	@for $i from 1 through set.$grid-columns + 1 {
+		.#{breakpointName}\:grid__cell--#{$i} {
+			@include tools.mq($breakpointName) {
+				@include tools.grid-cell-span($i);
+			}
+		}
+	}
+}
+
+/*
+	Grid cell col class order
+*/
+@for $i from 1 through set.$grid-columns + 1 {
+	.grid__cell--col-order-#{$i} {
+		@include tools.grid-cell-order($i);
+	}
+}
+
+/*
+	Grid cell row class order
+*/
+@for $i from 1 through set.$grid-columns + 1 {
+	.grid__cell--row-order-#{$i} {
+		@include tools.grid-cell-order('row', $i);
+	}
+}

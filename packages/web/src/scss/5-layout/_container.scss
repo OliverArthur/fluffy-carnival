@@ -1,0 +1,16 @@
+///-------------------------- Container -------------------------
+/// CONTAINERS - container, container-fluid
+///-------------------------------------------------------------
+@use 'sass:math';
+@use '../1-settings/' as set;
+
+$padding-left: math.div(set.$grid-gap, 2);
+$padding-right: math.div(set.$grid-gap, 2);
+
+$padding-total: $padding-left + $padding-right;
+
+
+.container {
+	margin-inline: auto;
+	width: min(100% - $padding-total, set.$container-fluid-max-width);
+}
