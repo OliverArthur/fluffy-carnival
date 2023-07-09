@@ -1,0 +1,44 @@
+///-------------------------- MEDIA QUERY -------------------------
+/// MEDIA QUERY - mixins
+///-------------------------------------------------------------
+@use 'sass:map';
+@use '../1-settings/settings' as var;
+
+
+/*
+	Define media query
+
+	Params:
+		- breakpoint
+		- type: min-width or max-width
+*/
+
+@mixin mq($breakpoint, $type: 'min-width') {
+	$breakpoint: map.get(var.$mq-breakpoints, $breakpoint);
+
+	@if $type == 'min-width' {
+		@media (min-width: $breakpoint) {
+			@content;
+		}
+	} @else if $type == 'max-width' {
+		@media (max-width: $breakpoint) {
+			@content;
+		}
+	}
+}
+
+/*
+	Define media query between two breakpoints
+
+	Params:
+		- breakpoint-1
+		- breakpoint-2
+*/
+@mixin mq-between($breakpoint-1, $breakpoint-2) {
+	$breakpoint-1: map.get(var.$mq-breakpoints, $breakpoint-1);
+	$breakpoint-2: map.get(var.$mq-breakpoints, $breakpoint-2);
+
+	@media (min-width: $breakpoint-1) and (max-width: $breakpoint-2) {
+		@content;
+	}
+}

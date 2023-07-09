@@ -1,0 +1,259 @@
+///-------------------------- SETTINGS -------------------------
+/// Contains all the variables and settings for the project
+///-------------------------------------------------------------
+@use 'sass:map';
+
+@use './functions' as *;
+
+/*
+ * Breakpoints
+ * @type {Map}
+*/
+$mq-breakpoints: (
+	'sm': 576px,
+	'md': 768px,
+	'lg': 992px,
+	'xl': 1200px,
+	'xxl': 1400px
+);
+
+/*
+ * Container size definitions
+ * We can have to types of containers:
+ * 	- Fluid
+ * 	- Fixed per breakpoint
+*/
+
+/// fluid container max width
+/// @type {Number}
+/// @default 1400px
+$container-fluid-max-width: 1400px !default;
+
+/// fixed container max width per breakpoint
+/// @type {Map}
+$container-fixed-per-breakpoint: (
+	'sm': 540px,
+	'md': 720px,
+	'lg': 960px,
+	'xl': 1140px,
+	'xxl': 1320px
+) !default;
+
+/// additional padding for container
+/// @type {Number}
+/// @default 0
+$container-additional-padding: 0;
+
+/*
+	---------------------------------
+ 	* Grid definitions
+ 	---------------------------------
+*/
+
+/// grid-columns
+/// @type {Number}
+/// @default 12
+$grid-columns: 12 !default;
+
+/// grid-gap
+/// @type {Number} . .
+/// @default 24px
+$grid-gap: remCalc(24) !default;
+
+/// grid-col-max-width
+/// @type {Number}
+/// @default 91px
+$grid-col-max-width: math.div(
+	($container-fluid-max-width - ($container-additional-padding * 2) - ($grid-gap * 11)),
+	12
+) !default;
+
+/*
+	---------------------------------
+ 	* Spacing definitions
+ 	---------------------------------
+*/
+
+/// spacing variables
+
+/// space-2xs
+/// @type {Number}
+/// @default 4px
+$space-2xs: remCalc(4) !default;
+/// space-xs
+/// @type {Number}
+/// @default 8px
+$space-xs: remCalc(8) !default;
+/// space-sm
+/// @type {Number}
+/// @default 16px
+$space-sm: remCalc(16) !default;
+/// space-md
+/// @type {Number}
+/// @default 24px
+$space-md: remCalc(24) !default;
+/// space-lg
+/// @type {Number}
+/// @default 32px
+$space-lg: remCalc(32) !default;
+/// space-xl
+/// @type {Number}
+/// @default 40px
+$space-xl: remCalc(40) !default;
+/// space-2xl
+/// @type {Number}
+/// @default 48px
+$space-2xl: remCalc(48) !default;
+/// space-3xl
+/// @type {Number}
+/// @default 56px
+$space-3xl: remCalc(56) !default;
+/// space-4xl
+/// @type {Number}
+/// @default 64px
+$space-4xl: remCalc(64) !default;
+
+/// spacing map
+/// @type {Map}
+/// @note this map is used to generate the spacing classes
+$spacings: (
+	'2xs': $space-2xs,
+	'xs': $space-xs,
+	'sm': $space-sm,
+	'md': $space-md,
+	'lg': $space-lg,
+	'xl': $space-xl,
+	'2xl': $space-2xl,
+	'3xl': $space-3xl,
+	'4xl': $space-4xl
+) !default;
+
+/*
+	---------------------------------
+ 	* Colors definitions
+ 	---------------------------------
+*/
+
+/// colors variables
+
+$primary-color: #1e73be !default;
+$secondary-color: #f2f2f2 !default;
+$black: #000000 !default;
+$dark: #181818 !default;
+
+$white: #ffffff !default;
+$light: #f2f2f2 !default;
+
+/// color map
+/// @type {Map}
+/// @note this map is used to generate the color classes
+$colors: (
+	'primary': $primary-color,
+	'secondary': $secondary-color,
+	'black': $black,
+	'dark': $dark,
+	'white': $white,
+	'light': $light
+) !default;
+
+/*
+	---------------------------------
+ 	* Typography definitions
+ 	---------------------------------
+*/
+
+/// font-family body
+///	@type {String}
+/// @default 'Roboto', sans-serif
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+$font-family: 'Roboto', sans-serif !default;
+$font-base-family: $font-family !default;
+
+/// font-family headings
+/// @type {string}
+/// @default 'Noto', sans-serif
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+$font-headings-family: 'Noto', sans-serif !default;
+
+/// font icons family
+/// @type {String}
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/*
+	Responsive typography: stepped with value per breakpoint map
+	@type {Map}
+*/
+$font-size-base: (
+	sm: remCal(18)
+) !default;
+
+$font-size-1: (
+	sm: remCalc(32),
+	lg: remCalc(44)
+) !default;
+
+$font-size-2: (
+	sm: remCalc(26),
+	lg: remCalc(34)
+) !default;
+
+$font-size-3: (
+	sm: remCalc(24),
+	lg: remCalc(26)
+) !default;
+
+$font-size-4: (
+	sm: remCalc(20),
+	lg: remCalc(24)
+) !default;
+
+$font-size-5: (
+	sm: remCalc(18),
+	lg: remCalc(20)
+) !default;
+
+$font-size-6: (
+	sm: remCalc(16),
+	lg: remCalc(18)
+) !default;
+
+
+/*
+	---------------------------------
+ 	* Transition definitions
+ 	---------------------------------
+*/
+
+/// transition variables
+$transition-linear: all 250ms linear !default;
+$transition-linear-fast: all 150ms linear !default;
+$transition-ease: all 250ms ease !default;
+$transition-func-ease-out-cubic: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1) !default;
+
+
+
+/*
+	---------------------------------
+ 	* Border definitions
+ 	---------------------------------
+*/
+
+/// border variables
+$border-radius: remCalc(4) !default;
+$border-radius-sm: remCalc(2) !default;
+$border-radius-lg: remCalc(8) !default;
+
+/*
+	---------------------------------
+ 	* Shadow definitions
+ 	---------------------------------
+*/
+
+/// shadow variables
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !default;
+$shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !default;
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !default;
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !default;
+$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !default;
+

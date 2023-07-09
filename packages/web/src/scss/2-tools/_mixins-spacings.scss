@@ -1,0 +1,48 @@
+///-------------------------- SPACING -------------------------
+/// SPACING - mixins
+///-------------------------------------------------------------
+@use '../1-settings/functions' as func;
+
+/*
+	Define margin y
+
+	Params:
+		- value {number}
+*/
+@mixin my($val) {
+	margin-top: func.remCalc($val);
+	margin-bottom: func.remCalc($val);
+}
+
+/*
+	Define margin x
+
+	Params:
+		- value {number}
+*/
+@mixin mx($val) {
+	margin-left: func.remCalc($val);
+	margin-right: func.remCalc($val);
+}
+
+/*
+	Define padding y
+
+	Params:
+		- value {number}
+*/
+@mixin py($val) {
+	padding-top: func.remCalc($val);
+	padding-bottom: func.remCalc($val);
+}
+
+/*
+	Define padding x
+
+	Params:
+		- value {number}
+*/
+@mixin px($val) {
+	padding-left: func.remCalc($val);
+	padding-right: func.remCalc($val);
+}

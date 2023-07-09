@@ -1,0 +1,44 @@
+///-------------------------- UTILITIES -------------------------
+/// UTILITIES  - mixins
+///-------------------------------------------------------------
+@use './mixins-mq' as mq;
+
+
+/*
+	Define responsive property.
+	Apply the property, cycling values in map made up of (breakpoint:value) pairs.
+
+	Params:
+		- property name
+		- map of values
+
+	Note: can be used to define responsive font-size, margin, padding, etc.
+	Example: @include responsive-property('font-size', (sm: 1.2rem, md: 1.4rem, lg: 1.6rem));
+*/
+@mixin responsive-property($property, $values-map) {
+	@each $breakpoint in $value in $values-map {
+		@if $breakpoint == 'sm' {
+			#{$property}: $value;
+		} @else {
+			@include mq.mq($breakpoint) {
+				#{$property}: $value;
+			}
+		}
+	}
+}
+
+
+/*
+	 Define background image in size cover.
+
+	 Params:
+	 	- image url
+*/
+@mixin bg-cover($image: null) {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	@if $image != null {
+		background-image: url($image);
+	}
+}
