@@ -1,12 +1,32 @@
+///-------------------------- Header -------------------------
+/// HEADER - component styles
+///-------------------------------------------------------------
+
 @use '../1-settings/settings' as var;
 
 .header {
+	align-items: center;
 	background-color: var.$black;
 	display: flex;
 	justify-content: space-between;
-	padding: 1.25rem 0;
 	position: relative;
 	width: 100%;
+
+	.logo {
+		color: var.$white;
+		align-items: center;
+		display: flex;
+
+		&__icon {
+			color: var.$primary-color;
+		}
+	}
+
+	&__identity {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+	}
 
 	&--sticky {
 		box-shadow: var.$shadow;
