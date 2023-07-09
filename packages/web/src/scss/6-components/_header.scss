@@ -7,11 +7,12 @@
 
 .header {
 	align-items: center;
-	background-color: var.$black;
+	background-color: var.$dark;
 	display: flex;
 	justify-content: space-between;
 	position: relative;
 	width: 100%;
+	box-shadow: var.$shadow;
 
 	.logo {
 		align-items: center;
