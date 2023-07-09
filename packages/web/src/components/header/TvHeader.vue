@@ -14,18 +14,18 @@ const props = withDefaults(
 )
 
 const tvShowHeaderModeClasses: Record<HeaderMode, string> = {
-	default: 'tv-header--default',
-	sticky: 'tv-header--sticky',
+	default: 'header--default',
+	sticky: 'header--sticky',
 }
 
 const tvShowHeaderModifierClasses: Record<HeaderModifier, string> = {
-	default: 'tv-header--default',
-	compact: 'tv-header--compact',
-	dense: 'tv-header--dense'
+	default: 'header--default',
+	compact: 'header--compact',
+	dense: 'header--dense'
 }
 
 const headerClasses = computed(() => [
-	'tv-header',
+	'header',
 	tvShowHeaderModeClasses[props.mode],
 	tvShowHeaderModifierClasses[props.modifier]
 ])
@@ -33,14 +33,20 @@ const headerClasses = computed(() => [
 
 <template>
   <header :class="headerClasses">
-    <div class="tv-header__identity">
+    <div class="header__identity">
+	  <slot name="toggle-menu" />
       <slot name="identity" />
     </div>
-    <div class="tv-header__content">
+    <div class="header__content">
       <slot name="content" />
     </div>
-    <div class="tv-header__actions">
+    <div class="header__actions">
       <slot name="actions" />
     </div>  
   </header>
 </template>
+
+<style lang="scss" scoped>
+@use '@/scss/6-components/header' as *;
+</style>
+
