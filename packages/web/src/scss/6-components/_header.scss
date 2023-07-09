@@ -1,0 +1,47 @@
+///-------------------------- Header -------------------------
+/// HEADER - component styles
+///-------------------------------------------------------------
+
+@use '../1-settings/settings' as var;
+@use '../2-tools/mixins-typography' as type;
+
+.header {
+	align-items: center;
+	background-color: var.$dark;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	width: 100%;
+	box-shadow: var.$shadow;
+
+	.logo {
+		align-items: center;
+		color: var.$white;
+		display: flex;
+		font-family: var.$font-headings-family;
+		@include type.font-size-5;
+
+		&__icon {
+			color: var.$primary-color;
+		}
+	}
+
+	&__identity {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&--sticky {
+		box-shadow: var.$shadow;
+		left: 0;
+		position: fixed;
+		right: 0;
+		top: 0;
+		z-index: var.$z-index-sticky;
+	}
+
+	&--static {
+		position: static;
+	}
+}

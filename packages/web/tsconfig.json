@@ -8,10 +8,12 @@
     "jsxImportSource": "vue",
     "verbatimModuleSyntax": true,
     "paths": {
-      "@/*": ["./src/*"]
-    },
-		"types": ["vite/client"]
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@views/*": ["./src/views/*"],
+      "@hooks/*": ["./src/hooks/*"]
+    }
   },
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+	"include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

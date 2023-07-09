@@ -1,10 +1,8 @@
 <script lang="ts" setup>
+import { TvHeader } from '@components/header'
 import { TvContainer } from '@components/container'
 </script>
 <template>
-  <div class="view">
-		<tv-container>
-			<h1>Home</h1>
-		</tv-container>
-	</div>
+	<tv-header></tv-header>
+	<tv-container></tv-container>
 </template>

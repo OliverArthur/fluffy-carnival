@@ -4,43 +4,50 @@ import type { HeaderMode, HeaderModifier } from './types'
 
 const props = withDefaults(
 	defineProps<{
-		mode?: HeaderMode
-		modifier?: HeaderModifier
+		mode?: HeaderMode | null
+		modifier?: HeaderModifier | null
 	}>(),
 	{
-		mode: 'default',
-		modifier: 'default'
+		mode: null,
+		modifier: null
 	}
 )
 
 const tvShowHeaderModeClasses: Record<HeaderMode, string> = {
-	default: 'tv-header--default',
-	sticky: 'tv-header--sticky',
+	sticky: 'header--sticky',
 }
 
 const tvShowHeaderModifierClasses: Record<HeaderModifier, string> = {
-	default: 'tv-header--default',
-	compact: 'tv-header--compact',
-	dense: 'tv-header--dense'
+	compact: 'header--compact',
+	dense: 'header--dense'
 }
 
 const headerClasses = computed(() => [
-	'tv-header',
-	tvShowHeaderModeClasses[props.mode],
-	tvShowHeaderModifierClasses[props.modifier]
+	'header',
+	tvShowHeaderModeClasses[props.mode ?? 'sticky'],
+	tvShowHeaderModifierClasses[props.modifier ?? 'dense']
 ])
 </script>
 
 <template>
-  <header :class="headerClasses">
-    <div class="tv-header__identity">
-      <slot name="identity" />
+  <header class="sm:py-xs md:py-sm sm:px-xs md:px-sm" :class="headerClasses">
+    <div class="header__identity">
+	  	<slot name="burger-button" />
+      <div class="logo">
+				<span class="material-icons logo__icon ml-sm mr-xs">smart_display</span>
+				<slot name="logo" />
+			</div>
     </div>
-    <div class="tv-header__content">
+    <div class="header__content">
       <slot name="content" />
     </div>
-    <div class="tv-header__actions">
+    <div class="header__actions">
       <slot name="actions" />
     </div>  
   </header>
 </template>
+
+<style lang="scss" scoped>
+@use '@/scss/6-components/header' as *;
+</style>
+

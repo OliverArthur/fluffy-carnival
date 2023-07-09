@@ -38,26 +38,26 @@
 /*
 	Define font sizes based on responsive map.
 */
-@mixin font-size-1($font-size-map) {
-	@include util.responsive-property('font-size', set.$font-size-1);
+@mixin font-size-1() {
+	@include util.responsive-property('font-size', var.$font-size-1);
 }
 
-@mixin font-size-2($font-size-map) {
-	@include util.responsive-property('font-size', set.$font-size-2);
+@mixin font-size-2() {
+	@include util.responsive-property('font-size', var.$font-size-2);
 }
 
-@mixin font-size-3($font-size-map) {
-	@include util.responsive-property('font-size', set.$font-size-3);
+@mixin font-size-3() {
+	@include util.responsive-property('font-size', var.$font-size-3);
 }
 
-@mixin font-size-4($font-size-map) {
-	@include util.responsive-property('font-size', set.$font-size-4);
+@mixin font-size-4() {
+	@include util.responsive-property('font-size', var.$font-size-4);
 }
 
-@mixin font-size-5($font-size-map) {
-	@include util.responsive-property('font-size', set.$font-size-5);
+@mixin font-size-5() {
+	@include util.responsive-property('font-size', var.$font-size-5);
 }
 
-@mixin font-size-6($font-size-map) {
-	@include util.responsive-property('font-size', set.$font-size-6);
+@mixin font-size-6() {
+	@include util.responsive-property('font-size', var.$font-size-6);
 }
