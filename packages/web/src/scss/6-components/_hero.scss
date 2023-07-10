@@ -1,0 +1,32 @@
+///-------------------------- Hero -------------------------
+/// HERO - component styles
+///-------------------------------------------------------------
+
+@use '../1-settings/settings' as var;
+@use '../1-settings/functions' as func;
+@use '../2-tools/mixins-typography' as type;
+@use '../2-tools/mixins-utilities' as util;
+
+@mixin hero-base {
+	align-items: center;
+	background-color: var.$dark;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	width: 100%;
+}
+
+
+.hero {
+	@include hero-base();
+
+	&__bg {
+		@include util.bg-cover();
+
+		width: 100%;
+	}
+
+	&__content {
+		width: 100%;
+	}
+}

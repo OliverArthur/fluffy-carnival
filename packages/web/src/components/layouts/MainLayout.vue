@@ -47,7 +47,9 @@ const toggleNavbar = () => {
 			<tv-navbar-item @on:action="setGenre('mystery')"> Mystery </tv-navbar-item>
 			<tv-navbar-item @on:action="setGenre('romance')"> Romance </tv-navbar-item>
 		</tv-navbar>
-		<section class="main-page__content"></section>
+		<section class="main-page__content">
+			<slot />
+		</section>
 	</tv-container>
 </template>
 

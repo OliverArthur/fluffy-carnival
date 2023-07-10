@@ -59,9 +59,9 @@ watch(model, (value) => {
 		:disabled="disabled"
 		:readonly="readOnly"
 		:required="required"
-		@focus="emit('on:focus', $event)"
-		@blur="emit('on:blur', $event)"
-		@input="emit('on:input', $event)"
+		@focus="emit('on:focus', model)"
+		@blur="emit('on:blur', model)"
+		@input="emit('on:input', model)"
 	/>
 </template>
 
