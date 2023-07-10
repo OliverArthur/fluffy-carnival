@@ -32,6 +32,12 @@
 		justify-content: space-between;
 	}
 
+	&__content {
+		width: 100% - 25;
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+
 	&--sticky {
 		box-shadow: var.$shadow;
 		left: 0;

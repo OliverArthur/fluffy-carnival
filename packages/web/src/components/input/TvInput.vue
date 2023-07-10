@@ -30,8 +30,8 @@ const props = withDefaults(
 const model = ref(props.modelValue)
 
 const inputClasses: Record<InputSize, string> = {
-	sm: 'px-sm py-sm text-sm',
-	md: 'px-md py-md text-base',
+	sm: 'px-xs py-xs text-sm',
+	md: 'px-sm py-sm text-base',
 	lg: 'px-lg py-lg text-lg'
 }
 
@@ -50,6 +50,7 @@ watch(model, (value) => {
 </script>
 <template>
 	<input
+		class="input"
 		:id="id"
 		v-model="model"
 		:type="type"
@@ -63,3 +64,7 @@ watch(model, (value) => {
 		@input="emit('on:input', $event)"
 	/>
 </template>
+
+<style lang="scss" scoped>
+@use '@/scss/6-components/input' as *;
+</style>

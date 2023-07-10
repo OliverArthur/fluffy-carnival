@@ -1,7 +1,8 @@
-///-------------------------- Input -------------------------
+///-------------------------- Input ----------------------------
 /// INPUT - component styles
 ///-------------------------------------------------------------
-@use '../1-settings/function' as func;
+@use '../1-settings/functions' as func;
+@use '../1-settings/settings' as var;
 @use '../2-tools/mixins-typography' as type;
 
 @mixin input-base {
@@ -32,14 +33,15 @@
 @mixin input-placeholder {
 	color: var.$white;
 	opacity: 0.5;
+	@include type.font-size-6;
 }
 
 
 /// INPUT - component styles
 
 .input {
-	@include input-base;
-	@include type.font-size(1);
+	@include input-base();
+	@include type.font-size-5;
 
 	&:focus {
 		@include input-focus;
