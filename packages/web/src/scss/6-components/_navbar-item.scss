@@ -1,0 +1,17 @@
+///-------------------------- navbar-item -------------------------
+/// NAVBAR-ITEM - component styles
+///-------------------------------------------------------------
+@use '../1-settings/settings' as var;
+@use '../2-tools/mixins-typography' as type;
+
+.navbar-item {
+	color: var.$white;
+
+	&:hover {
+		background-color: var.$primary-color;
+
+		> button {
+			background-color: var.$primary-color;
+		}
+	}
+}
