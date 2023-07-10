@@ -1,0 +1,34 @@
+///-------------------------- Main page -------------------------
+/// MAIN PAGE - module styles
+///-------------------------------------------------------------
+@use '../1-settings/settings' as var;
+@use '../2-tools/mixins-grid' as grid;
+@use '../1-settings/functions' as func;
+
+$grid-areas: "header header header header"
+							"nav nav content content"
+							"footer footer footer footer";
+
+.main-page {
+	@include grid.grid-by-areas($grid-areas);
+	margin-top: func.remCalc(94);
+
+
+	&__header {
+		grid-area: header;
+	}
+
+	&__nav {
+		grid-area: nav;
+	}
+
+	&__content {
+		grid-area: content;
+		margin-inline: auto;
+		width: min(100vw - 22rem, 100vw);
+	}
+
+	&__footer {
+		grid-area: footer;
+	}
+}

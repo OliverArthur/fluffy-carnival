@@ -3,7 +3,6 @@
 ///-------------------------------------------------------------
 @use './mixins-mq' as mq;
 
-
 /*
 	Define responsive property.
 	Apply the property, cycling values in map made up of (breakpoint:value) pairs.
@@ -27,12 +26,11 @@
 	}
 }
 
-
 /*
-	 Define background image in size cover.
+	Define background image in size cover.
 
-	 Params:
-	 	- image url
+		Params:
+			- image url
 */
 @mixin bg-cover($image: null) {
 	background-size: cover;

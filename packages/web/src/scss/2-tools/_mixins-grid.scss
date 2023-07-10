@@ -40,6 +40,18 @@
 	}
 }
 
+
+/*
+	Define a grid by areas.
+
+		params:
+			- grid areas
+*/
+@mixin grid-by-areas($areas) {
+	display: grid;
+	grid-template-areas: $areas;
+}
+
 /*
 	Define a grid cell using lines
 
