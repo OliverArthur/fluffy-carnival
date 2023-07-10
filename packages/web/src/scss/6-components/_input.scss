@@ -1,0 +1,61 @@
+///-------------------------- Input ----------------------------
+/// INPUT - component styles
+///-------------------------------------------------------------
+@use '../1-settings/functions' as func;
+@use '../1-settings/settings' as var;
+@use '../2-tools/mixins-typography' as type;
+
+@mixin input-base {
+	align-items: center;
+	background-clip: padding-box;
+	background-color: transparent;
+	border-radius: var.$border-radius;
+	border: 1px solid var.$white;
+	color: var.$white;
+	display: flex;
+	line-height: 1.5;
+	padding: 0.5rem 1rem;
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	width: 100%;
+
+	&:disabled {
+		background-color: var.$disabled;
+		opacity: 1;
+	}
+}
+
+@mixin input-focus {
+	border-color: var.$primary-color;
+	box-shadow: 0 0 0 0.2rem rgba(var.$primary-color, 0.25);
+	outline: 0;
+}
+
+@mixin input-placeholder {
+	color: var.$white;
+	opacity: 0.5;
+	@include type.font-size-6;
+}
+
+
+/// INPUT - component styles
+
+.input {
+	@include input-base();
+	@include type.font-size-5;
+
+	&:focus {
+		@include input-focus;
+	}
+
+	&::placeholder {
+		@include input-placeholder;
+	}
+
+	&.is-invalid {
+		border-color: var.$danger;
+	}
+
+	&.is-valid {
+		border-color: var.$success;
+	}
+}

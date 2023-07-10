@@ -1,0 +1,78 @@
+///-------------------------- Autocomplete -------------------------
+/// AUTOCOMPLETE - module styles
+///-------------------------------------------------------------
+@use '../1-settings/settings' as var;
+@use '../2-tools/mixins-typography' as type;
+
+@mixin autocomplete-base {
+	align-items: center;
+	background-color: var.$white;
+	border-radius: var.$border-radius;
+	color: var.$black;
+	display: flex;
+	font-weight: 300;
+	line-height: 1;
+	margin: 0;
+	padding: 0 var.$space-xs;
+	position: relative;
+	text-align: left;
+	margin-inline: auto;
+	width: min(100% - 3rem, 100vw);
+	z-index: 1;
+}
+
+.autocomplete {
+	@include autocomplete-base;
+
+	&__input {
+		color: var.$black;
+		border: none;
+		
+		&:focus {
+			outline: none;
+			box-shadow: none;
+			border: none;
+		}
+
+		&::placeholder {
+			color: var.$black;
+		}
+	}
+
+	&__list {
+		background-color: var.$white;
+		border-radius: var.$border-radius;
+		box-shadow: var.$shadow;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		top: 4.4rem;
+		right: 0;
+		width: 100%;
+		height: remCalc(280);
+		overflow-y: auto;
+		z-index: 1;
+
+		.list-item {
+			@include type.font-size-6;
+			line-height: 1.5;
+			padding: var.$space-xs var.$space-sm;
+			cursor: pointer;
+
+			&__button {
+				width: 100%;
+
+				&:hover {
+					background-color: transparent;
+					color: var.$light;
+				}
+			}
+
+			&:hover {
+				background-color: lighten(var.$primary-color, 0.2);
+				color: var.$light;
+			}
+		}
+	}
+}

@@ -7,9 +7,8 @@
 
 @mixin button-default {
 	align-items: center;
-	background-color: var.$primary-color;
 	border-radius: var.$border-radius;
-	border: 1px solid var.$primary-color;
+	border: none;
 	color: var.$white;
 	cursor: pointer;
 	display: flex;
@@ -19,10 +18,12 @@
 	padding: var.$space-sm;
 	text-align: center;
 	text-decoration: none;
-	text-transform: uppercase;
 	transition: var.$transition-func-ease-out-cubic;
 	white-space: nowrap;
 	width: auto;
+	
+	-webkit-appearance: none;
+	-moz-appearance: none;
 
 	&:hover,
 	&:focus {
@@ -37,15 +38,17 @@
 	@include button-default;
 	@include type.font-size-6;
 
+	&--primary {
+		background-color: var.$primary-color;
+	}
+
 	&--secondary {
 		background-color: var.$secondary-color;
-		border-color: var.$dark;
 		color: var.$dark;
 
 		&:hover,
 		&:focus {
 			background-color: var.$primary-color;
-			border-color: var.$primary-color;
 			color: var.$white;
 		}
 	}
@@ -54,18 +57,20 @@
 		@include type.font-size-6;
 		
 		padding: var.$space-xs;
-		background-color: transparent;
-		border-color: transparent;
 
 		&:hover,
 		&:focus {
 			background-color: var.$primary-color;
-			border-color: var.$primary-color;
 			color: var.$white;
 		}
 	}
 
  	&--plain {
 		background-color: transparent;
+		color: var.$dark;
+	}
+
+	&--sm {
+		padding: var.$space-xs;
 	}
 }
