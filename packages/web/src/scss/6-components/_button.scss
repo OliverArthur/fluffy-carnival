@@ -21,7 +21,7 @@
 	transition: var.$transition-func-ease-out-cubic;
 	white-space: nowrap;
 	width: auto;
-	
+
 	-webkit-appearance: none;
 	-moz-appearance: none;
 
@@ -55,7 +55,7 @@
 
 	&--icon {
 		@include type.font-size-6;
-		
+
 		padding: var.$space-xs;
 
 		&:hover,
@@ -72,5 +72,13 @@
 
 	&--sm {
 		padding: var.$space-xs;
+	}
+
+	&.is-dark-mode {
+		color: var.$light;
+	}
+
+	&.is-full-width {
+		width: 100%;
 	}
 }

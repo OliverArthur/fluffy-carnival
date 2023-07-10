@@ -1,6 +1,8 @@
 ///-------------------------- BASE -----------------------
 /// BASE - default styles for all elements
-///-------------------------------------------------------------
+///-------------------------------------------------------
+
+@use '../1-settings/settings' as var;
 
 html {
 	line-height: 1.15;
@@ -8,7 +10,8 @@ html {
 }
 body {
 	margin: 0;
-	font-family: 'Roboto', sans-serif;
+	font-family: var.$font-family;
+	background-color: var.$black;
 }
 main {
 	display: block;

@@ -14,6 +14,8 @@ const props = withDefaults(
 		disabled?: boolean
 		loading?: boolean
 		isOutline?: boolean
+		inDarkMode?: boolean
+		isFullWidth?: boolean
 	}>(),
 	{
 		size: 'md',
@@ -23,7 +25,8 @@ const props = withDefaults(
 		iconName: null,
 		disabled: false,
 		loading: false,
-		isOutline: false
+		isOutline: false,
+		inDarkMode: false
 	}
 )
 
@@ -35,7 +38,9 @@ const buttonClasses = computed(() => [
 		button: true,
 		'is-disabled': props.disabled,
 		'is-loading': props.loading,
-		'is-outline': props.isOutline
+		'is-outline': props.isOutline,
+		'is-dark-mode': props.inDarkMode,
+		'is-full-width': props.isFullWidth
 	}
 ])
 

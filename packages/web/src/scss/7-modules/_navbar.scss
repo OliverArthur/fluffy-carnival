@@ -1,0 +1,42 @@
+///-------------------------- navbar -------------------------
+/// NAVBAR - module styles
+///-------------------------------------------------------------
+@use '../1-settings/settings' as var;
+@use '../1-settings/functions' as func;
+@use '../2-tools/mixins-typography' as type;
+
+@mixin navbar-base {
+	align-items: center;
+	background-color: var.$black;
+	color: var.$light;
+	display: flex;
+	flex-direction: column;
+	font-weight: 300;
+	height: calc(100vh - func.remCalc(94));
+	line-height: 1;
+	margin: 0;
+	padding: 0 var.$space-xs;
+	position: relative;
+	text-align: left;
+	margin-top: func.remCalc(94);
+}
+
+
+.navbar {
+	@include navbar-base;
+	left: -1000px;
+	transition: all 0.3s ease-in-out;
+	width: 0;
+
+	&.is-active {
+		left: 0;
+		width: min(100% - 1rem, func.remCalc(270));
+	}
+
+	&__list {
+		@include type.font-size-6;
+		padding: 0;
+		width: 100%;
+		list-style: none;
+	}
+}
