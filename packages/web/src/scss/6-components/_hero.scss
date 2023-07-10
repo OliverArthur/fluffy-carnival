@@ -24,6 +24,8 @@
 		@include util.bg-cover();
 
 		width: 100%;
+
+		height: calc(100vh - 30rem);
 	}
 
 	&__content {
