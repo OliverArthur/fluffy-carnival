@@ -13,4 +13,9 @@ $padding-total: $padding-left + $padding-right;
 .container {
 	margin-inline: auto;
 	width: min(100% - $padding-total, set.$container-fluid-max-width);
+
+	&.is-full-width {
+		margin-inline: unset;
+		width: 100%;
+	}
 }
