@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { TvButton } from '@components/button'
 const props = withDefaults(defineProps<{
 	name: string
 }>(), {
@@ -9,6 +10,7 @@ const props = withDefaults(defineProps<{
 	<div class="section-list">
 		<div class="section-list__header">
 			{{ props.name }}
+			<tv-button variant="outline" theme="primary">Watch more</tv-button>
 		</div>
 		<div class="section-list__content">
 			<slot />

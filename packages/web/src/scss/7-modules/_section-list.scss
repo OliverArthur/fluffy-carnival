@@ -19,7 +19,11 @@
 		@include typo.text-headline;
 		@include typo.font-size-3;
 
+		align-items: center;
 		color: var.$light;
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
 	}
 
 	&__content {

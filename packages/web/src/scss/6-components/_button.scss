@@ -40,11 +40,35 @@
 
 	&--primary {
 		background-color: var.$primary-color;
+
+		&.button--outline {
+			background-color: transparent;
+			border: 1px solid var.$primary-color;
+			color: var.$light;
+
+			&:hover,
+			&:focus {
+				background-color: var.$primary-color;
+				color: var.$light;
+			}
+		}
 	}
 
 	&--secondary {
 		background-color: var.$secondary-color;
 		color: var.$dark;
+
+		&.button--outline {
+			background-color: transparent;
+			border: 1px solid var.$secondary-color;
+			color: var.$light;
+
+			&:hover,
+			&:focus {
+				background-color: var.$secondary-color;
+				color: var.$dark;
+			}
+		}
 
 		&:hover,
 		&:focus {
