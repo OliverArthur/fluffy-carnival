@@ -1,6 +1,6 @@
-import { Country } from './Country'
-import { Image as ShowImage } from './Image'
-import { Rating as ShowRating } from './Rating'
+import type { Country } from './Country'
+import type { Image as ShowImage } from './Image'
+import type { Rating as ShowRating } from './Rating'
 
 export type showId = number
 export type showUrl = string

@@ -1,5 +1,5 @@
-import { Image as EpisodeImage } from './Image'
-import { Rating as EpisodeRating } from './Rating'
+import type { Image as EpisodeImage } from './Image'
+import type { Rating as EpisodeRating } from './Rating'
 
 export type episodeID = number
 export type episodeUrl = string

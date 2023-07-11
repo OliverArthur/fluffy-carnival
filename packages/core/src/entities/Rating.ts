@@ -1,3 +1,3 @@
 export interface Rating {
-	average: number
+	average: number | null
 }

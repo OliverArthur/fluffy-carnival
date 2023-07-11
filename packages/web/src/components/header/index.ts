@@ -1,1 +1,1 @@
-export { default as TvHeader } from './TVHeader.vue'
+export { default as TvHeader } from './TvHeader.vue'

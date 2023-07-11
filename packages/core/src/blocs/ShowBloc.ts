@@ -1,4 +1,4 @@
-import { DataError } from '../common/DataError'
+import type { DataError } from '../common/DataError'
 import { createBloc } from '../common/Bloc'
 import showService from '../services/show'
 

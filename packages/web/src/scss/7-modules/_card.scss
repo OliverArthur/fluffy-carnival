@@ -6,7 +6,6 @@
 @use '../2-tools/mixins-typography' as type;
 @use '../2-tools/mixins-utilities' as util;
 
-
 @mixin card-base {
 	background-color: var.$white;
 	border-radius: var.$border-radius-sm;
@@ -15,9 +14,8 @@
 	flex-direction: column;
 	position: relative;
 	width: 100%;
-	max-width: func.remCalc(300);
+	min-width: func.remCalc(300);
 }
-
 
 .card {
 	@include card-base;

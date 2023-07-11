@@ -1,1 +1,1 @@
-export { default as createShowBloc } from './ShowBloc'
+export * from './ShowBloc'

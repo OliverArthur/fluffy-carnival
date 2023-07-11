@@ -1,4 +1,5 @@
-import { createEither, Either } from './Either'
+import { createEither } from './Either'
+import type { Either } from './Either'
 
 interface EitherAsync<L, R> {
 	map: <T>(fn: (r: R) => T) => EitherAsync<L, T>
@@ -9,7 +10,7 @@ interface EitherAsync<L, R> {
 }
 
 /**
- * 
+ *
  * A factory function that creates an EitherAsync instance.
  * and follows the functional programming paradigm by creating a monad
  * that allows to chain operations that return a Promise of an Either instance.
