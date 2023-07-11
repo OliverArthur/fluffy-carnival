@@ -18,7 +18,7 @@ const toggleNavbar = () => {
 }
 </script>
 <template>
-	<tv-container class="main-page">
+	<tv-container class="main-page" is-full-width>
 		<tv-header class="main-page__header">
 			<template #burger-button>
 				<tv-button @on-pressed="toggleNavbar" variant="icon" icon-name="menu" />

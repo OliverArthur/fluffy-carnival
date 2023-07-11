@@ -5,6 +5,7 @@ import { TvContainer } from '@components/container'
 import { TvHero } from '@components/hero'
 import { TvSection } from '@components/sections'
 import { TvCard } from '@components/card'
+import { TvHorizontalSlide } from '@components/slide'
 
 import type { Show } from '@showtimetv/core'
 
@@ -75,11 +76,13 @@ onUnmounted(() => bloc.unobservable(key))
 				:name="section.genre"
 				:key="section.genre"
 			>
-				<template v-for="show in section.shows" :key="show.id">
-					<tv-card :img="show.image.medium" :alt="show.name">
-						<h2 class="text-2xl">{{ show.name }}</h2>
-					</tv-card>
-				</template>
+				<tv-horizontal-slide>
+					<template v-for="show in section.shows" :key="show.id">
+						<tv-card :img="show.image.medium" :alt="show.name">
+							<h2 class="text-2xl">{{ show.name }}</h2>
+						</tv-card>
+					</template>
+				</tv-horizontal-slide>
 			</tv-section>
 		</tv-container>
 	</div>
