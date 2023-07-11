@@ -21,6 +21,7 @@ export default defineConfig({
 					@use "./src/scss/3-base" as *;
 					@use "./src/scss/4-classes" as *;
 					@use "./src/scss/5-layout" as *;
+					@use "./src/scss/8-trumps" as *;
 				`
 			}
 		}
