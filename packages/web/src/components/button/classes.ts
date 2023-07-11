@@ -22,4 +22,5 @@ export const buttonVariantClasses: Record<ButtonVariant, string> = {
 	plain: 'button--plain',
 	icon: 'button--icon',
 	link: 'button--link',
+	outline: 'button--outline'
 }

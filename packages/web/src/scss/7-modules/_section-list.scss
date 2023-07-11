@@ -1,0 +1,33 @@
+///-------------------------- Section list -------------------------
+/// SECTION LIST - module styles
+///-------------------------------------------------------------
+@use '../1-settings/settings' as var;
+@use '../1-settings/functions' as func;
+@use '../2-tools/mixins-typography' as typo;
+
+@mixin section-list-base {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	width: 100%;
+}
+
+.section-list {
+	@include section-list-base;
+
+	&__header {
+		@include typo.text-headline;
+		@include typo.font-size-3;
+
+		align-items: center;
+		color: var.$light;
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+	}
+
+	&__content {
+		min-height: func.remCalc(200);
+	}
+
+}
