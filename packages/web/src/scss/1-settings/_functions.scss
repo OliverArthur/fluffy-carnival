@@ -3,3 +3,8 @@
 @function remCalc($px, $base: 16) {
 	@return #{math.div($px, $base)}rem;
 }
+
+
+@function aspectRatio($width, $height) {
+	@return percentage($height / $width);
+}
