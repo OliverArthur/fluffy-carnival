@@ -51,14 +51,14 @@
 		}
 
 		&.left {
-			left: 1rem;
+			left: 0;
 			&:hover {
 				background-color: rgba(var.$black, 0.5);
 			}
 		}
 
 		&.right {
-			right: 1rem;
+			right: 0;
 			&:hover {
 				background-color: rgba(var.$black, 0.5);
 			}

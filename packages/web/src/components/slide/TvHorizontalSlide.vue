@@ -5,12 +5,14 @@ import { TvButton } from '@components/button'
 const scrollContainerRef = ref<HTMLElement>()
 const isAtLeft = ref(true)
 const isAtRight = ref(false)
+const hasScroll = ref(false)
 
 watchEffect(() => {
 	const container = scrollContainerRef.value
 	if (container) {
 		isAtLeft.value = container.scrollLeft <= 0
 		isAtRight.value = container.scrollLeft >= container.scrollWidth - container.offsetWidth
+		hasScroll.value = container.scrollWidth > container.offsetWidth
 	}
 })
 
@@ -33,12 +35,14 @@ const scrollRight = () => {
 			<slot />
 		</div>
 		<tv-button
+			v-show="hasScroll"
 			:class="['slide__button', 'left', { disabled: isAtLeft }]"
 			@onPressed="scrollLeft"
 			variant="icon"
 			icon-name="arrow_back_ios"
 		/>
 		<tv-button
+			v-show="hasScroll"
 			:class="['slide__button', 'right', { disabled: isAtRight }]"
 			@onPressed="scrollRight"
 			variant="icon"
