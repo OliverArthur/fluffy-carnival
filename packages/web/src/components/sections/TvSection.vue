@@ -2,9 +2,11 @@
 import { TvButton } from '@components/button'
 
 const props = withDefaults(defineProps<{
-	name: string
+	name: string,
+	enableScroll?: boolean
 }>(), {
-	name: 'World'
+	name: 'World',
+	enableScroll: false
 })
 </script>
 <template>

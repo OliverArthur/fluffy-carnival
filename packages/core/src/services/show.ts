@@ -7,9 +7,13 @@ import type { Either } from '../common/Either'
 
 
 export default function showService() {
-	const getShow = async (id: number): Promise<Either<DataError, Show>> => {
+	const getShow = async (page: number): Promise<Either<DataError, Show[]>> => {
 		try {
-			const response = await axios.get(`http://api.tvmaze.com/shows/${id}`)
+			const response = await axios.get('http://api.tvmaze.com/shows', {
+				params: {
+					page: page
+				}
+			})
 			return createEither.right(response.data)
 		} catch (error) {
 			if (error instanceof Error) {

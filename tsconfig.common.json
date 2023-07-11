@@ -14,15 +14,6 @@
     "strictNullChecks": false,
     "noImplicitAny": false,
     "noEmit": true,
-    "allowSyntheticDefaultImports": true,
-    "paths": {
-      "@/*": ["./src/*"],
-      "@components/*": ["./src/components/*"],
-      "@views/*": ["./src/views/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@store/*": ["./src/store/*"]
-    }
-  },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+    "allowSyntheticDefaultImports": true
+  }
 }
