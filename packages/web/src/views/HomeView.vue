@@ -11,14 +11,29 @@ import { TvCard } from '@components/card'
 		</tv-container>
 		<tv-container class="sm:py-sm md:py-md">
 			<tv-section class="sm:py-sm md:py-md" name="Adventure">
-				<tv-card></tv-card>
-				<tv-card></tv-card>
-				<tv-card></tv-card>
-				<tv-card></tv-card>
+				<tv-card :img="null" :alt="null"></tv-card>
+				<tv-card :img="null" :alt="null"></tv-card>
+				<tv-card :img="null" :alt="null"></tv-card>
+				<tv-card :img="null" :alt="null"></tv-card>
 			</tv-section>
-			<tv-section class="sm:py-sm md:py-md" name="Action"></tv-section>
-			<tv-section class="sm:py-sm md:py-md" name="Mystery"></tv-section>
-			<tv-section class="sm:py-sm md:py-md" name="Romance"></tv-section>
+			<tv-section class="sm:py-sm md:py-md" name="Action">
+				<tv-card :img="null" :alt="null"></tv-card>
+				<tv-card :img="null" :alt="null"></tv-card>
+				<tv-card :img="null" :alt="null"></tv-card>
+				<tv-card :img="null" :alt="null"></tv-card>
+			</tv-section>
+			<tv-section class="sm:py-sm md:py-md" name="Mystery">
+				<tv-card :img="null" :alt="null"></tv-card>
+				<tv-card :img="null" :alt="null"></tv-card>
+				<tv-card :img="null" :alt="null"></tv-card>
+				<tv-card :img="null" :alt="null"></tv-card>
+			</tv-section>
+			<tv-section class="sm:py-sm md:py-md" name="Romance">
+				<tv-card :img="null" :alt="null"></tv-card>
+				<tv-card :img="null" :alt="null"></tv-card>
+				<tv-card :img="null" :alt="null"></tv-card>
+				<tv-card :img="null" :alt="null"></tv-card>
+			</tv-section>
 		</tv-container>
 	</div>
 </template>
