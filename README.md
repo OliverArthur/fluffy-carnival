@@ -86,3 +86,11 @@ The `web` package contains the UI components and application-specific code for t
 - `views`: Contains the Vue components representing different views of the application.
 
 The project structure is organized in a way that separates the business logic from the UI. The core package focuses on pure business logic, avoiding strong dependencies on frameworks to ensure easier maintenance and portability. The UI components in the web package leverage modern JavaScript features like the `Proxy` API to enable reactivity and enhance the user experience.
+
+### TODO
+
+- Mobile version: Close the search bar after performing a search.
+- Details: Add a back button. Currently, users have to use the back button from the browser.
+- Improve the UI for the list: Add more information to the card and include a sidebar with all the genres for sorting by genres.
+- Replace Pinia store with the BloC pattern to further separate the logic from the UI.
+- Add more test.
