@@ -80,7 +80,7 @@ The `web` package contains the UI components and application-specific code for t
 - `components`: Contains reusable UI components, including `autocomplete`, `button`, `card`, `container`, `header`, `hero`, `input`, `layouts`, `navbar`, `sections`, and `slide`.
 - `router`: Contains the router configuration for the application.
 - `scss`: Contains SCSS stylesheets organized using the 7-1 pattern, including settings, tools, base styles, component styles, layout styles, module styles, and utility classes.
-- `store`: Contains the Vuex store modules for managing state and performing actions related to searching shows, managing shows, and performing single search operations.
+- `store`: Contains the Pinia store modules for managing state and performing actions related to searching shows, managing shows, and performing single search operations.
 - `utils`: Contains utility functions or helper modules.
 - `views`: Contains the Vue components representing different views of the application.
 
