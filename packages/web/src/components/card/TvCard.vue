@@ -7,8 +7,7 @@ const props = defineProps<{
 
 const getImgAndAlt = computed(() => {
 	return {
-		img:
-			props.img ?? 'https://s24526.pcdn.co/wp-content/uploads/woocommerce-placeholder-400x400.png',
+		img: props.img ?? 'https://s24526.pcdn.co/wp-content/uploads/woocommerce-placeholder-400x400.png',
 		alt: props.alt ?? 'Not image found'
 	}
 })
@@ -21,7 +20,7 @@ const getImgAndAlt = computed(() => {
 				<img :src="getImgAndAlt.img" :alt="getImgAndAlt.alt" />
 			</div>
 		</div>
-		<div class="card__body">
+		<div class="card__body sm:pl-sm sm:pl-sm md:pl-sm md:pl-sm">
 			<slot />
 		</div>
 	</article>

@@ -13,13 +13,14 @@
 	position: relative;
 	width: 100%;
 	box-shadow: var.$shadow;
+	padding: var.$space-sm 0;
 
 	.logo {
 		align-items: center;
 		color: var.$white;
 		display: flex;
 		font-family: var.$font-headings-family;
-		@include type.font-size-5;
+		@include type.font-size-4;
 
 		&__icon {
 			color: var.$primary-color;
@@ -33,9 +34,14 @@
 	}
 
 	&__content {
-		width: 100% - 25;
-		padding-left: 1.5rem;
-		padding-right: 1.5rem;
+		width: min(100% - 18rem, 100%);
+	}
+
+	&__actions {
+		align-items: center;
+		display: flex;
+		justify-content: flex-end;
+		margin-right: 1rem;
 	}
 
 	&--sticky {

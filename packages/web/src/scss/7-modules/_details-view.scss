@@ -1,0 +1,32 @@
+///-------------------------- Details view -------------------------
+/// DETAILS VIEW - module styles
+///-------------------------------------------------------------
+@use '../1-settings/settings' as var;
+@use '../1-settings/functions' as func;
+@use '../2-tools/mixins-typography' as typo;
+
+.details-view {
+
+	&__hero {
+		color: var.$white;
+		align-items: flex-start;
+		h2 {
+			color: var.$white;
+			@include typo.text-headline;
+		}
+
+		.hero-content {
+			padding: var.$space-md;
+		}
+
+		.genres {
+			display: inline-flex;
+			padding: var.$space-xs;
+			width: fit-content;
+			margin-right: var.$space-xs;
+			border-radius: var.$border-radius;
+			
+			background-color: var.$primary-color;
+		}
+	}
+}

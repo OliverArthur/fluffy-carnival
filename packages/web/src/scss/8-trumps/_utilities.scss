@@ -1,0 +1,18 @@
+@use '../2-tools/mixins-mq' as mq;
+
+.only-mobile {
+	display: block;
+
+	@include mq.mq('md') {
+		display: none;
+	}
+}
+
+
+.only-desktop {
+	display: none;
+
+	@include mq.mq('md') {
+		display: flex;
+	}
+}

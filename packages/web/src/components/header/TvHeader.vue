@@ -30,7 +30,7 @@ const headerClasses = computed(() => [
 </script>
 
 <template>
-  <header class="sm:py-xs md:py-sm sm:px-xs md:px-sm" :class="headerClasses">
+  <header :class="headerClasses">
     <div class="header__identity">
 	  	<slot name="burger-button" />
       <div class="logo">

@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc --build tsconfig.app.json  && vite build",
+    "build": "tsc --build tsconfig.json && jest && vite build",
     "test": "jest --watch"
   },
   "dependencies": {

@@ -1,52 +1,96 @@
-# ShowTimeTV
+# Fluffy Carnival
 
-This template should help get you started developing with Vue 3 in Vite.
+App to see the information about your favorites Tv show
 
-## Recommended IDE Setup
+## Table of Contents
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- [About the Project](#about-the-project)
+- [Installation](#installation)
+- [Project Architecture](#project-architecture)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Type Support for `.vue` Imports in TS
+## About the Project
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+This project is an application where users can search, list, and view information about TV shows. It provides a user-friendly interface for browsing and accessing details about various TV shows.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+**Note**: This project was developed under a tight deadline, and certain features or design patterns may not have been fully implemented. However, the necessary foundation and tests have been included to demonstrate the intended architecture.
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+The project utilizes the BloC (Business Logic Component) design pattern to separate the business logic from the UI components. This pattern allows for better maintainability and testability of the codebase, as well as easier tracking of state changes.
 
-## Customize configuration
+## Installation
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### Recommended IDE Setup
 
-## Project Setup
+To set up your development environment, we recommend using the following IDE setup:
 
-```sh
-npm install
-```
+- [VSCode](https://code.visualstudio.com/)
+- [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur)
+- [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin)
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
+Clone the repository:
 
 ```sh
-npm run build
+git clone https://github.com/OliverArthur/fluffy-carnival.git
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+Navigate to the project directory and install the dependencies. Make sure you have pnpm installed. If not, you can find installation instructions at [pnpm.io](https://pnpm.io/).
 
 ```sh
-npm run test:unit
+cd fluffy-carnival
+pnpm install
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+To run the app, use the following command from the project root:
 
 ```sh
-npm run lint
+pnpm web:dev
 ```
+
+This command will start the Vite server for the web app.
+
+Other available commands:
+
+- `pnpm core:build`
+- `pnpm core:start`
+- `pnpm core:test`
+- `pnpm web:dev`
+- `pnpm web:build`
+- `pnpm web:lint`
+- `pnpm web:test`
+- `pnpm web:format`
+- `pnpm build:prod`
+
+## Project Architecture
+
+The project follows a monorepo architecture. The business logic is located in the `core` package, and the UI is in the `web` package. This monorepo structure provides several benefits, including easier code sharing and improved maintainability.
+
+### Core Package
+
+The `core` package contains the business logic of the application. It consists of the following directories:
+
+- `common`: Contains common utilities and shared components used by the application.
+- `entities`: Contains entity models used in the application, such as `Country`, `Episodes`, `Image`, `Rating`, and `Show`.
+- `services`: Contains service modules responsible for fetching data and performing operations, such as `search` and `show`.
+
+### Web Package
+
+The `web` package contains the UI components and application-specific code for the frontend. It consists of the following directories:
+
+- `assets`: Contains static assets used in the UI, such as images or fonts.
+- `components`: Contains reusable UI components, including `autocomplete`, `button`, `card`, `container`, `header`, `hero`, `input`, `layouts`, `navbar`, `sections`, and `slide`.
+- `router`: Contains the router configuration for the application.
+- `scss`: Contains SCSS stylesheets organized using the 7-1 pattern, including settings, tools, base styles, component styles, layout styles, module styles, and utility classes.
+- `store`: Contains the Vuex store modules for managing state and performing actions related to searching shows, managing shows, and performing single search operations.
+- `utils`: Contains utility functions or helper modules.
+- `views`: Contains the Vue components representing different views of the application.
+
+The project structure is organized in a way that separates the business logic from the UI. The core package focuses on pure business logic, avoiding strong dependencies on frameworks to ensure easier maintenance and portability. The UI components in the web package leverage modern JavaScript features like the `Proxy` API to enable reactivity and enhance the user experience.
+
+### TODO
+
+- Mobile version: Close the search bar after performing a search.
+- Details: Add a back button. Currently, users have to use the back button from the browser.
+- Improve the UI for the list: Add more information to the card and include a sidebar with all the genres for sorting by genres.
+- Replace Pinia store with the BloC pattern to further separate the logic from the UI.
+- Add more test.

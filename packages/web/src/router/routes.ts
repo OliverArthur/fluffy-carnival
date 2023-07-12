@@ -1,5 +1,6 @@
 import type { RouteRecordRaw, RouteMeta } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
+import DetailsView from '@/views/DetailsView.vue'
 
 import layouts from '@/components/layouts'
 
@@ -21,6 +22,16 @@ const routes: CustomRouteRecordRaw[] = [
 			layout: 'MainLayout',
 			title: 'Home'
 		}
+	},
+	{
+		path: '/details/:name/:embed',
+		name: 'details',
+		component: DetailsView,
+		meta: {
+			layout: 'DetailsLayout',
+			title: 'Details'
+		},
+		props: true
 	}
 ]
 

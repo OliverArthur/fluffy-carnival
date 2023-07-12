@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": [],
+  "exclude": ["src/**/**/__tests__/*", "__tests__", "dist/**/**/__tests__/*", "node_modules"],
   "compilerOptions": {
     "composite": true,
     "lib": [],

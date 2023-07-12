@@ -1,52 +1,53 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { TvContainer } from '@components/container'
 import { TvHeader } from '@components/header'
-import { TvButton } from '@components/button'
 import { TvAutocomplete } from '@components/autocomplete'
-import { TvNavbar, TvNavbarItem } from '@components/navbar'
+import { TvButton } from '@components/button'
 
-// TODO: call the API to get the series.
-const setGenre = (genre: string) => {
-	console.log(genre)
+import { useShows } from '@store/useShows'
+import { useSearchShows } from '@store/useSearchShows'
+
+const shows = useShows()
+const searchShow = useSearchShows()
+const isSearchOpen = ref(false)
+
+const names = computed(() => {
+	if (shows.state.kind === 'LoadedShowState') {
+		return shows.state.show.map((show) => show.name)
+	}
+	return []
+})
+
+const searchState = computed(() => searchShow.state.query)
+
+const toggleSearch = () => {
+	console.log('toggle search')
+	isSearchOpen.value = !isSearchOpen.value
 }
 
-const navbarOpen = ref(true)
-
-const toggleNavbar = () => {
-	navbarOpen.value = !navbarOpen.value
+const handleSearch = (query: string) => {
+	searchShow.fetchShows(query)
 }
 </script>
 <template>
 	<tv-container class="main-page" is-full-width>
 		<tv-header class="main-page__header">
-			<template #burger-button>
-				<tv-button @on-pressed="toggleNavbar" variant="icon" icon-name="menu" />
-			</template>
 			<template #logo> SeriesTube </template>
 			<template #content>
 				<tv-autocomplete
-					:items="[
-						'banana',
-						'orange',
-						'pineapple',
-						'grape',
-						'strawberry',
-						'watermelon',
-						'melon',
-						'papaya'
-					]"
+					:toggle-in-mobile="isSearchOpen"
+					class="main-page__search"
+					:items="names"
+					@on:submit="handleSearch"
+					v-model="searchState"
+					live-search
 				/>
 			</template>
+			<template #actions>
+				<tv-button @on-pressed="toggleSearch" class="only-mobile" variant="icon" icon-name="menu" />
+			</template>
 		</tv-header>
-		<tv-navbar class="main-page__nav" :is-open="navbarOpen">
-			<tv-navbar-item @on:action="setGenre('action')"> Action </tv-navbar-item>
-			<tv-navbar-item @on:action="setGenre('adventure')"> Adventure </tv-navbar-item>
-			<tv-navbar-item @on:action="setGenre('drama')"> Drama </tv-navbar-item>
-			<tv-navbar-item @on:action="setGenre('horror')"> Horror </tv-navbar-item>
-			<tv-navbar-item @on:action="setGenre('mystery')"> Mystery </tv-navbar-item>
-			<tv-navbar-item @on:action="setGenre('romance')"> Romance </tv-navbar-item>
-		</tv-navbar>
 		<div class="main-page__content">
 			<slot />
 		</div>

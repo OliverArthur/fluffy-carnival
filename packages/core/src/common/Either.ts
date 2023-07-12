@@ -18,13 +18,19 @@ export interface Either<L, R> {
 }
 
 /**
- * The function is a factory function that follows the functional programming paradigm
- * and creates a monad that allows to chain operations that return an Either instance.
- * where the left side of the Either instance is the error type and the right side
- * is the success type.
+ * Creates an Either instance with the given value and provides methods to handle the possible outcomes.
+ *
+ * Observations:
+ * The Either type is a good approach in functional programming
+ * because it allows us to handle two possible outcomes of a computation in a type-safe way.
+ * By wrapping the possible outcomes in an Either type, you can ensure that the type system enforces the handling of both cases,
+ * which can help prevent errors and make your code more robust.
  * 
+ * @Function
+ * @name createEither
+ *
  * @param value The value to create the Either instance with.
- * 
+ *
  * @returns An Either instance with the given value.
  */
 export function createEither<L, R>(value: EitherValue<L, R>) {

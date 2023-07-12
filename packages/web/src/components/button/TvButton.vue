@@ -49,7 +49,7 @@ const emits = defineEmits<{
 }>()
 </script>
 <template>
-	<button :class="buttonClasses" @click="emits('onPressed')">
+	<button :class="buttonClasses" :type="props.type" @click="emits('onPressed')" :disabled="props.disabled">
 		<span v-if="!$slots.default && props.variant === 'icon'" class="material-icons icon" aria-hidden="true">{{ props.iconName }}</span>
 		<slot />
 	</button>

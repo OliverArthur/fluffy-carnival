@@ -1,7 +1,6 @@
 import type {
 	ButtonSize,
 	ButtonTheme,
-	ButtonType,
 	ButtonVariant
 } from './types'
 
