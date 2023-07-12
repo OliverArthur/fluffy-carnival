@@ -5,13 +5,15 @@
 @use '../2-tools/mixins-grid' as grid;
 @use '../1-settings/functions' as func;
 
-$grid-areas: "header header header header"
-							"nav nav content content"
-							"footer footer footer footer";
 
 .main-page {
-	@include grid.grid-by-areas($grid-areas);
-	margin-top: func.remCalc(94);
+	@include grid.grid-by-areas(var.$dashboard-grid-area);
+	margin-top: func.remCalc(64);
+	grid-template-columns: var.$dashboard-template-columns;
+	grid-template-rows: var.$dashboard-template-rows;
+	
+	height: 100vh;
+  width: 100vw;
 
 
 	&__header {
@@ -25,7 +27,7 @@ $grid-areas: "header header header header"
 	&__content {
 		grid-area: content;
 		margin-inline: auto;
-		width: min(100vw - 22rem, 100vw);
+		width: min(100vw - 24.8rem, var.$container-fluid-max-width);
 	}
 
 	&__footer {

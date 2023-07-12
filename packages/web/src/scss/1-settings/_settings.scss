@@ -28,7 +28,7 @@ $mq-breakpoints: (
 /// fluid container max width
 /// @type {Number}
 /// @default 1400px
-$container-fluid-max-width: 1400px !default;
+$container-fluid-max-width: 1240px !default;
 
 /// fixed container max width per breakpoint
 /// @type {Map}
@@ -37,7 +37,7 @@ $container-fixed-per-breakpoint: (
 	'md': 720px,
 	'lg': 960px,
 	'xl': 1140px,
-	'xxl': 1320px
+	'xxl': 1240px
 ) !default;
 
 /// additional padding for container
@@ -68,6 +68,35 @@ $grid-col-max-width: math.div(
 	($container-fluid-max-width - ($container-additional-padding * 2) - ($grid-gap * 11)),
 	12
 ) !default;
+
+/*
+	Dashboard grid
+*/
+
+/// dashboard-header-height
+/// @type {Number}
+/// @default 60px
+$dashboard-header-height: remCalc(60);
+/// dashboard-footer-height
+/// @type {Number}
+/// @default 60px
+$dashboard-footer-height: remCalc(60);
+/// dashboard-sidebar-width
+/// @type {Number}
+/// @default 250px
+$dashboard-sidebar-width: remCalc(250);
+/// dashboard-grid-area
+/// @type {String}
+/// @default 'header header' 'nav  content'
+$dashboard-grid-area: 'header header' 'nav  content' 'footer footer';
+/// dashboard-template-columns
+/// @type {String}
+/// @default 250px 1fr
+$dashboard-template-columns: $dashboard-sidebar-width 1fr;
+/// dashboard-template-rows
+/// @type {String}
+/// @default 60px 1fr 60px
+$dashboard-template-rows: $dashboard-header-height 1fr $dashboard-footer-height;
 
 /*
 	---------------------------------

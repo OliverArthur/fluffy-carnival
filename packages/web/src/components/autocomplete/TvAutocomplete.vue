@@ -63,6 +63,7 @@ const handleKeyDown = (event: KeyboardEvent) => {
 const setResult = (result: string) => {
 	searchTerm.value = result
 	isOpen.value = false
+	emits('on:submit', result)
 }
 
 const handleKeyUp = (event: KeyboardEvent) => {
@@ -96,6 +97,10 @@ onMounted(() => document.addEventListener('click', handleClickOutside))
 onBeforeUnmount(() => document.removeEventListener('click', handleClickOutside))
 
 const debouncedOnChange = debounce(onChange, 300)
+
+const emits = defineEmits<{
+  (e: 'on:submit', ...args): void
+}>()
 </script>
 
 <template>

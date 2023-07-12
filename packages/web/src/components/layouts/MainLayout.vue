@@ -1,20 +1,47 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { TvContainer } from '@components/container'
 import { TvHeader } from '@components/header'
 import { TvButton } from '@components/button'
 import { TvAutocomplete } from '@components/autocomplete'
 import { TvNavbar, TvNavbarItem } from '@components/navbar'
 
-// TODO: call the API to get the series.
-const setGenre = (genre: string) => {
-	console.log(genre)
-}
+import { useShows } from '@store/useShows'
+import { useSearchShows } from '@store/useSearchShows'
+
+const shows = useShows()
+const searchShow = useSearchShows()
 
 const navbarOpen = ref(true)
 
-const toggleNavbar = () => {
-	navbarOpen.value = !navbarOpen.value
+const names = computed(() => {
+	if (shows.state.kind === 'LoadedShowState') {
+		return shows.state.show.map((show) => show.name)
+	}
+	return []
+})
+
+const genres = computed(() => {
+	if (shows.state.kind === 'LoadedShowState') {
+		const genres: Set<string> = new Set()
+
+		shows.state.show.forEach((show) => {
+			show.genres.forEach((genre) => {
+				genres.add(genre)
+			})
+		})
+
+		return Array.from(genres)
+	}
+	return []
+})
+
+const searchState = computed(() => searchShow.state.query)
+
+const toggleNavbar = () => (navbarOpen.value = !navbarOpen.value)
+
+const handleSearch = (query: string) => {
+	searchShow.fetchShows(query)
 }
 </script>
 <template>
@@ -25,27 +52,11 @@ const toggleNavbar = () => {
 			</template>
 			<template #logo> SeriesTube </template>
 			<template #content>
-				<tv-autocomplete
-					:items="[
-						'banana',
-						'orange',
-						'pineapple',
-						'grape',
-						'strawberry',
-						'watermelon',
-						'melon',
-						'papaya'
-					]"
-				/>
+				<tv-autocomplete :items="names" @on:submit="handleSearch" v-model="searchState" />
 			</template>
 		</tv-header>
 		<tv-navbar class="main-page__nav" :is-open="navbarOpen">
-			<tv-navbar-item @on:action="setGenre('action')"> Action </tv-navbar-item>
-			<tv-navbar-item @on:action="setGenre('adventure')"> Adventure </tv-navbar-item>
-			<tv-navbar-item @on:action="setGenre('drama')"> Drama </tv-navbar-item>
-			<tv-navbar-item @on:action="setGenre('horror')"> Horror </tv-navbar-item>
-			<tv-navbar-item @on:action="setGenre('mystery')"> Mystery </tv-navbar-item>
-			<tv-navbar-item @on:action="setGenre('romance')"> Romance </tv-navbar-item>
+			<tv-navbar-item v-for="genre in genres" :key="genre"> {{ genre }} </tv-navbar-item>
 		</tv-navbar>
 		<div class="main-page__content">
 			<slot />

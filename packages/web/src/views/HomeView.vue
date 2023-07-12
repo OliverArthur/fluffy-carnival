@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { reactive, computed } from 'vue'
 
 import { TvContainer } from '@components/container'
 import { TvHero } from '@components/hero'
@@ -7,69 +7,63 @@ import { TvSection } from '@components/sections'
 import { TvCard } from '@components/card'
 import { TvHorizontalSlide } from '@components/slide'
 
-import type { Show } from '@showtimetv/core'
+import { useShows } from '@store/useShows'
+import { useSearchShows } from '@store/useSearchShows'
 
-import { showsBloc } from '@/blocs'
 
-const { bloc, fetchShows } = showsBloc()
+const shows = useShows()
+const searchShow = useSearchShows()
 
-const state = ref(bloc.getState())
-let key = {}
+const showState = reactive(shows.state)
+const showsByRating = computed(() => {
+	if (showState.kind === 'LoadedShowState') {
+		let payload = showState.show
 
-const updateState = (newState) => {
-	state.value = newState
-}
-
-bloc.observable(key, updateState)
-
-// sort shows by genre
-const showsByGenre = computed(() => {
-	if (state.value.kind === 'LoadedShowState') {
-		const shows = state.value.show
+		if (searchShow.state.query !== '' && searchShow.state.query !== null) {
+			payload = payload.filter((show) =>
+				show.name.toLowerCase().includes(searchShow.state.query.toLowerCase())
+			)
+		}
 
 		// get all genres from shows and remove duplicates
 		const genres: Set<string> = new Set()
 
-		shows.forEach((show: Show) => {
-			show.genres.forEach((genre: string) => {
+		payload.forEach((show) => {
+			show.genres.forEach((genre) => {
 				genres.add(genre)
 			})
 		})
 
-		return Array.from(genres).map((genre: string) => {
+		const showsByGenre = Array.from(genres).map((genre) => {
 			return {
 				genre,
-				shows: shows.filter((show: Show) => show.genres.includes(genre))
+				shows: payload.filter((show) => show.genres.includes(genre))
 			}
 		})
-	}
-	return []
-})
 
-// sort shows by rating
-const showsByRating = computed(() => {
-	if (state.value.kind === 'LoadedShowState') {
-		const shows = showsByGenre.value
-
-		return shows.map((show: any) => {
+		const sortingByRating = showsByGenre.map((show) => {
 			return {
 				genre: show.genre,
-				shows: show.shows.sort((a: Show, b: Show) => b.rating.average - a.rating.average)
+				shows: show.shows.sort((a, b) => b.rating.average - a.rating.average)
 			}
 		})
+
+		return sortingByRating
+	} else {
+		return []
 	}
-	return []
 })
 
-onMounted(() => fetchShows(1))
-onUnmounted(() => bloc.unobservable(key))
+//TODO: This can be improved some kind of pagination
+// to fetch more shows when user scrolls to bottom of page or something else.
+shows.fetchShows(1)
 </script>
 <template>
 	<div class="view">
-		<tv-container class="sm:py-sm md:py-md">
+		<tv-container class="sm:py-sm md:py-md" is-full-width>
 			<tv-hero></tv-hero>
 		</tv-container>
-		<tv-container class="sm:py-sm md:py-md">
+		<tv-container class="sm:py-sm md:py-md" is-full-width>
 			<tv-section
 				v-for="section in showsByRating"
 				class="sm:py-sm md:py-md"

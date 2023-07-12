@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const props = withDefaults(
 	defineProps<{
-		isFullWidth: boolean
+		isFullWidth?: boolean
 	}>(),
 	{
 		isFullWidth: false
