@@ -7,8 +7,7 @@ App to see the information about your favorites Tv show
 - [About the Project](#about-the-project)
 - [Installation](#installation)
 - [Project Architecture](#project-architecture)
-- [Contributing](#contributing)
-- [License](#license)
+- [Todo](#todo)
 
 ## About the Project
 
