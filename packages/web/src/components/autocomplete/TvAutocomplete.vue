@@ -9,10 +9,10 @@ import { debounce, sanitizeInput } from '@/utils'
 const props = withDefaults(
 	defineProps<{
 		items?: string[]
-		isAsync?: boolean
+		liveSearch?: boolean
 	}>(),
 	{
-		isAsync: false,
+		liveSearch: false,
 		items: () => []
 	}
 )
@@ -26,8 +26,9 @@ const activedescendant = ref('')
 
 const onChange = () => {
 	isOpen.value = true
-	if (props.isAsync) {
+	if (props.liveSearch) {
 		isLoading.value = true
+		emits('on:submit', searchTerm.value)
 		setTimeout(() => {
 			filterResults()
 			isLoading.value = false

@@ -52,7 +52,7 @@ const handleSearch = (query: string) => {
 			</template>
 			<template #logo> SeriesTube </template>
 			<template #content>
-				<tv-autocomplete :items="names" @on:submit="handleSearch" v-model="searchState" />
+				<tv-autocomplete :items="names" @on:submit="handleSearch" v-model="searchState" live-search />
 			</template>
 		</tv-header>
 		<tv-navbar class="main-page__nav" :is-open="navbarOpen">
