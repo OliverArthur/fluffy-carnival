@@ -36,14 +36,14 @@ const scrollRight = () => {
 		</div>
 		<tv-button
 			v-show="hasScroll"
-			:class="['slide__button', 'left', { disabled: isAtLeft }]"
+			:class="['slide__button', 'left', 'only-desktop', { disabled: isAtLeft }]"
 			@onPressed="scrollLeft"
 			variant="icon"
 			icon-name="arrow_back_ios"
 		/>
 		<tv-button
 			v-show="hasScroll"
-			:class="['slide__button', 'right', { disabled: isAtRight }]"
+			:class="['slide__button', 'right', 'only-desktop', { disabled: isAtRight }]"
 			@onPressed="scrollRight"
 			variant="icon"
 			icon-name="arrow_forward_ios"

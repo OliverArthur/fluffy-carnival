@@ -2,32 +2,48 @@
 /// AUTOCOMPLETE - module styles
 ///-------------------------------------------------------------
 @use '../1-settings/settings' as var;
+@use '../1-settings/functions' as func;
 @use '../2-tools/mixins-typography' as type;
+@use '../2-tools/mixins-mq' as mq;
 
 @mixin autocomplete-base {
 	align-items: center;
 	background-color: var.$white;
 	border-radius: var.$border-radius;
 	color: var.$black;
-	display: flex;
 	font-weight: 300;
 	line-height: 1;
 	margin: 0;
 	padding: 0 var.$space-xs;
-	position: relative;
 	text-align: left;
 	margin-inline: auto;
-	width: min(100% - 3rem, 100vw);
 	z-index: 1;
 }
 
 .autocomplete {
 	@include autocomplete-base;
 
+	position: absolute;
+	display: none;
+	right: 0;
+	top: 0;
+	width: func.remCalc(370);
+
+	@include mq.mq('md') {
+		display: flex;
+		position: relative;
+		width: min(100% - 3rem, 100vw);
+	}
+
+	&.is-open {
+		display: flex;
+	}
+
 	&__input {
 		color: var.$black;
 		border: none;
-		
+		width: 100%;
+
 		&:focus {
 			outline: none;
 			box-shadow: none;
@@ -50,7 +66,7 @@
 		top: 4.4rem;
 		right: 0;
 		width: 100%;
-		height: remCalc(280);
+		height: func.remCalc(380);
 		overflow-y: auto;
 		z-index: 1;
 

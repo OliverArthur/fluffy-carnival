@@ -34,8 +34,7 @@
 			- image url
 */
 @mixin bg-cover($image: null) {
-	background-size: cover;
-	background-position: center;
+	padding-bottom: 10%;
 	background-repeat: no-repeat;
 	@if $image != null {
 		background-image: url($image);

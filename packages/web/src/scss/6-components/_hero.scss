@@ -6,6 +6,7 @@
 @use '../1-settings/functions' as func;
 @use '../2-tools/mixins-typography' as type;
 @use '../2-tools/mixins-utilities' as util;
+@use '../2-tools/mixins-mq' as mq;
 
 @mixin hero-base {
 	align-items: center;
@@ -20,11 +21,22 @@
 .hero {
 	@include hero-base();
 
+	flex-direction: column;
+
+	@include mq.mq('md') {
+		flex-direction: row;
+	}
+
 	&__bg {
 		@include util.bg-cover();
-
+		background-size: cover;
 		width: 100%;
 		height: calc(100vh - 35rem);
+
+		@include mq.mq('md') {
+			width: 78rem;
+			flex-direction: row;
+		}
 	}
 
 	&__content {

@@ -2,15 +2,12 @@
 /// DETAILS PAGE - module styles
 ///-------------------------------------------------------------
 @use '../1-settings/settings' as var;
-@use '../2-tools/mixins-grid' as grid;
 @use '../1-settings/functions' as func;
-
-$grid-areas: "header header header header"
-							"nav nav content aside"
-							"footer footer footer footer";
+@use '../2-tools/mixins-grid' as grid;
+@use '../2-tools/mixins-mq' as mq;
 
 .details-page {
-	@include grid.grid-by-areas($grid-areas);
+	@include grid.grid-by-areas(var.$dashboard-grid-area);
 	margin-top: func.remCalc(94);
 
 
@@ -25,7 +22,11 @@ $grid-areas: "header header header header"
 	&__content {
 		grid-area: content;
 		margin-inline: auto;
-		width: min(100vw - 22rem, 100vw);
+		width: min(100vw - 1rem, 100vw);
+
+		@include mq.mq('md') {
+			width: min(100vw - 22rem, 100vw);
+		}
 	}
 
 	&__footer {

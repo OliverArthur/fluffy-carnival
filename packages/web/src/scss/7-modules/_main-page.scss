@@ -3,14 +3,24 @@
 ///-------------------------------------------------------------
 @use '../1-settings/settings' as var;
 @use '../2-tools/mixins-grid' as grid;
+@use '../2-tools/mixins-mq' as mq;
 @use '../1-settings/functions' as func;
 
 
 .main-page {
-	@include grid.grid-by-areas(var.$dashboard-grid-area);
-	margin-top: func.remCalc(64);
-	grid-template-columns: var.$dashboard-template-columns;
-	grid-template-rows: var.$dashboard-template-rows;
+	
+	margin-top: func.remCalc(90);
+	width: 100%;
+
+
+	@include mq.mq('md') {
+		@include grid.grid-by-areas(var.$dashboard-grid-area);
+
+		grid-template-columns: var.$dashboard-template-columns;
+		grid-template-rows: var.$dashboard-template-rows;
+
+		margin-top: func.remCalc(64);
+	}
 	
 	height: 100vh;
   width: 100vw;
@@ -20,14 +30,10 @@
 		grid-area: header;
 	}
 
-	&__nav {
-		grid-area: nav;
-	}
-
 	&__content {
 		grid-area: content;
 		margin-inline: auto;
-		width: min(100vw - 24.8rem, var.$container-fluid-max-width);
+		width: min(100vw - 1.8rem, 1400px);
 	}
 
 	&__footer {

@@ -7,10 +7,10 @@ const props = withDefaults(defineProps<{
 </script>
 <template>
 	<div class="section-list">
-		<div class="section-list__header">
+		<div class="section-list__header py-md pl-xs">
 			{{ props.name }}
 		</div>
-		<div class="section-list__content mt-md">
+		<div class="section-list__content">
 			<slot />
 		</div>
 	</div>

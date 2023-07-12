@@ -59,6 +59,7 @@ export const useShows = defineStore(STORE_ID, (): UseShowProps => {
 		if (state.kind === 'LoadedShowState') {
 			return state.show
 		}
+		return []
 	})
 
 	const isLoading = computed(() => state.kind === 'LoadingShowState')

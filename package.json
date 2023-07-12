@@ -11,7 +11,7 @@
     "web:lint": "pnpm --filter @showtimetv/web lint",
     "web:test": "pnpm --filter @showtimetv/web test:unit",
     "web:format": "pnpm --filter @showtimetv/web format",
-    "build": "pnpm run core:build && pnpm run web:build"
+    "build:prod": "pnpm --filter @showtimetv/web test && pnpm --filter @showtimetv/core build && pnpm --filter @showtimetv/web build"
   },
   "workspaces": [
     "packages/*"

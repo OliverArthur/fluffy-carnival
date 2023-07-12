@@ -1,11 +1,14 @@
 <script lang="ts" setup>
 import { reactive, computed } from 'vue'
+import { useRouter } from 'vue-router'
+
 
 import { TvContainer } from '@components/container'
-import { TvHero } from '@components/hero'
 import { TvSection } from '@components/sections'
 import { TvCard } from '@components/card'
 import { TvHorizontalSlide } from '@components/slide'
+
+const router = useRouter()
 
 import { useShows } from '@store/useShows'
 import { useSearchShows } from '@store/useSearchShows'
@@ -57,12 +60,14 @@ const showsByRating = computed(() => {
 //TODO: This can be improved some kind of pagination
 // to fetch more shows when user scrolls to bottom of page or something else.
 shows.fetchShows(1)
+
+const navigateToShowDetails = (name) => {
+  const embed = 'episodes'
+  router.push(`/details/${name}/${embed}`)
+}
 </script>
 <template>
 	<div class="view">
-		<tv-container class="sm:py-sm md:py-md" is-full-width>
-			<tv-hero></tv-hero>
-		</tv-container>
 		<tv-container class="sm:py-sm md:py-md" is-full-width>
 			<tv-section
 				v-for="section in showsByRating"
@@ -72,8 +77,8 @@ shows.fetchShows(1)
 			>
 				<tv-horizontal-slide>
 					<template v-for="show in section.shows" :key="show.id">
-						<tv-card :img="show.image.medium" :alt="show.name">
-							<h2 class="text-2xl">{{ show.name }}</h2>
+						<tv-card :img="show.image.medium" :alt="show.name" @click="navigateToShowDetails(show.name)">
+							<h2 class="text-2xl xs:py-md">{{ show.name }}</h2>
 						</tv-card>
 					</template>
 				</tv-horizontal-slide>

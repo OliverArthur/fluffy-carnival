@@ -1,7 +1,7 @@
 
 {
   "extends": "../../tsconfig.common.json",
-  "exclude": ["src/**/__tests__/*"],
+  "exclude": ["src/**/**/__tests__/*", "__tests__", "dist/**/**/__tests__/*", "node_modules"],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "preserve",
@@ -14,8 +14,8 @@
       "@hooks/*": ["./src/hooks/*"],
       "@store/*": ["./src/store/*"],
 			"@showtimetv/core": ["../core/src"]
-    }
+    },
   },
 	"include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "./env.d.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
 }

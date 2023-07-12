@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 
 import { TvInput } from '@components/input'
 import { TvButton } from '@components/button'
@@ -9,10 +9,12 @@ import { debounce, sanitizeInput } from '@/utils'
 const props = withDefaults(
 	defineProps<{
 		items?: string[]
-		liveSearch?: boolean
+		liveSearch?: boolean,
+		toggleInMobile?: boolean,
 	}>(),
 	{
 		liveSearch: false,
+		toggleInMobile: false,
 		items: () => []
 	}
 )
@@ -23,6 +25,8 @@ const isOpen = ref(false)
 const isLoading = ref(false)
 const arrowCounter = ref(0)
 const activedescendant = ref('')
+
+const isMobileSearch = ref(props.toggleInMobile)
 
 const onChange = () => {
 	isOpen.value = true
@@ -42,6 +46,7 @@ const handleClickOutside = (event: MouseEvent) => {
 	if (!(event.target as HTMLElement).closest('#autocomplete')) {
 		isOpen.value = false
 		searchTerm.value = ''
+		isMobileSearch.value = false
 	}
 }
 
@@ -65,6 +70,7 @@ const setResult = (result: string) => {
 	searchTerm.value = result
 	isOpen.value = false
 	emits('on:submit', result)
+	isMobileSearch.value = false
 }
 
 const handleKeyUp = (event: KeyboardEvent) => {
@@ -82,6 +88,7 @@ const onEnter = (event: KeyboardEvent) => {
 	searchTerm.value = results.value[arrowCounter.value]
 	arrowCounter.value = -1
 	isOpen.value = false
+	isMobileSearch.value = false
 }
 
 const highlightMatch = (text: string, match: string) => {
@@ -99,6 +106,10 @@ onBeforeUnmount(() => document.removeEventListener('click', handleClickOutside))
 
 const debouncedOnChange = debounce(onChange, 300)
 
+watch(() => props.toggleInMobile, (newValue) => {
+	isMobileSearch.value = newValue
+})
+
 const emits = defineEmits<{
   (e: 'on:submit', ...args): void
 }>()
@@ -112,6 +123,7 @@ const emits = defineEmits<{
 		aria-owns="results-list"
 		:aria-expanded="isOpen"
 		class="autocomplete"
+		:class="{ 'is-open': isMobileSearch }"
 	>
 		<tv-input
 			id="search-input"
@@ -124,7 +136,7 @@ const emits = defineEmits<{
 			v-model="searchTerm"
 			placeholder="Search"
 		/>
-		<tv-button variant="icon" theme="primary" icon-name="search" />
+		<tv-button v-if="!isOpen" variant="icon" theme="primary" icon-name="search" />
 		<ul v-show="isOpen" id="results-list" role="listbox" class="autocomplete__list">
 			<li v-if="isLoading" class="list-item list-item--loading">Looking in our library...</li>
 			<li v-if="!isLoading && results.length === 0" class="list-item list-item--empty">
