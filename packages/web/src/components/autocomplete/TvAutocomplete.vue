@@ -123,7 +123,7 @@ const emits = defineEmits<{
 		aria-owns="results-list"
 		:aria-expanded="isOpen"
 		class="autocomplete"
-		:class="{ 'is-open': isMobileSearch }"
+		:class="{ 'is-open': toggleInMobile }"
 	>
 		<tv-input
 			id="search-input"

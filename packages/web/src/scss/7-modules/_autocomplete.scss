@@ -27,7 +27,7 @@
 	display: none;
 	right: 0;
 	top: 0;
-	width: func.remCalc(370);
+	width: min(100% - 1.5rem, 100%);
 
 	@include mq.mq('md') {
 		display: flex;
